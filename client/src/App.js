@@ -4,7 +4,7 @@ const App = () =>{
 
     return(
         <div classname="app">
-            Hello
+            Hello World
         </div>
     )
 }
