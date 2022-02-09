@@ -11,6 +11,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import '../../css/User.css';
+import { addUser } from '../../service/userAPI';
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -27,19 +29,29 @@ function Copyright(props) {
 const theme = createTheme();
 
 function UserSignup() {
-  const handleSubmit = (event) => {
+  const navigate = useNavigate();
+
+  async function handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
+    const user = {
         firstName: data.get('firstName'),
         lastName: data.get('lastName'),
         email: data.get('email'),
         password: data.get('password'),
-    });
+    };
 
     //send this data to backend to signup user
     //once user is successfully signed up redirect them to home page / marketplace
+    const response = await addUser(user);
+    // console.log(response);
+    if(response.data.status === 'ok') {
+      localStorage.setItem('token', response.data.user);
+      navigate('/');
+    }
+    else {
+      //something went wrong -- invaild credentials
+    } 
   };
 
   return (
