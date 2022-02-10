@@ -12,8 +12,9 @@ import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
 import NavbarItems from './NavbarItems';
 import '../../css/Navbar.css';
+import { isUserLoggedIn } from '../../utils/AuthenticateUser';
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -101,22 +102,22 @@ function ResponsiveAppBar() {
               </Link>
             ))}
 
-            <Link to='/user-signup' className='user-signup-btn'>
+            {!props.logInStatus && <Link to='/user-signup' className='user-signup-btn'>
             <Button
                 sx={{ my: 2, color: 'black', display: 'block' }}
             >
               Signup
             </Button>
-            </Link>
+            </Link>}
 
-            <Link to='/user-login' className='user-login-btn'>
+            {!props.logInStatus && <Link to='/user-login' className='user-login-btn'>
             <Button
               variant="contained"
               sx={{ my: 2, color: 'white', display: 'block', backgroundColor: '#014DFF' }}
             >
               Login
             </Button>
-            </Link>
+            </Link>}
 
           </Box>
 

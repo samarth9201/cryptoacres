@@ -1,9 +1,4 @@
-.signup-div {
-    display: flex;
-    justify-content: center;
-}
-
-.user-login-list {
+.broker-login-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -15,24 +10,24 @@
     padding-bottom: 20px;
 }
 
-.user-login-user {
+.broker-login-user {
+    text-decoration: none;
+    color: black;
+}
+
+.broker-login-broker {
     border-bottom: 3px solid #014DFF;
     text-decoration: none;
     color: black;
 }
 
-.user-login-broker {
-    text-decoration: none;
-    color: black;
-}
-
-.user-login-list-item-user {
+.broker-login-list-item-user {
     display: inline-block;
     padding-left: 20px;
     padding-right: 20px;
 }
 
-.user-login-list-item-broker {
+.broker-login-list-item-broker {
     display: inline-block;
     padding-left: 10px;
     padding-left: 20px;

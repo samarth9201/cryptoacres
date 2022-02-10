@@ -9,8 +9,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
-import '../../css/User.css';
-import { loginUser } from '../../service/userAPI';
+import '../../css/Broker.css';
 import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
@@ -27,31 +26,31 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-function UserLogin(props) {
+function BrokerLogin(props) {
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
-    const user = {
+    const broker = {
       email: data.get('email'),
       password: data.get('password'),
     };
 
     //send this data to backend to login user
     //once user is successfully loged in redirect them to home page / marketplace
-    const response = await loginUser(user);
-    console.log(response.data);
+    // const response = await loginUser(user);
+    // console.log(response.data);
 
-    if(response.data.status === 'ok') {
-      props.setLogInStatus(true);
-      localStorage.setItem('token', response.data.user);
-      navigate('/');
-    }
-    else {
-      alert('Invalid username or password');
-    }
+    // if(response.data.status === 'ok') {
+    //   props.setLogInStatus(true);
+    //   localStorage.setItem('token', response.data.user);
+    //   navigate('/');
+    // }
+    // else {
+    //   alert('Invalid username or password');
+    // }
   };
 
   return (
@@ -73,12 +72,12 @@ function UserLogin(props) {
             Login
           </Typography>
 
-          <ul className='user-login-list'>
-            <Link to = '/user-login' className='user-login-user'>
-              <li className='user-login-list-item-user'>User</li>
+          <ul className='broker-login-list'>
+            <Link to = '/user-login' className='broker-login-user'>
+              <li className='broker-login-list-item-user'>User</li>
             </Link>
-            <Link to = '/broker-login' className='user-login-broker'>
-              <li className='user-login-list-item-broker'>Broker</li>
+            <Link to = '/broker-login' className='broker-login-broker'>
+              <li className='broker-login-list-item-broker'>Broker</li>
             </Link>
           </ul>
 
@@ -126,4 +125,4 @@ function UserLogin(props) {
   );
 }
 
-export default UserLogin;
+export default BrokerLogin;

@@ -28,7 +28,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-function UserSignup() {
+function UserSignup(props) {
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
@@ -46,6 +46,7 @@ function UserSignup() {
     const response = await addUser(user);
     // console.log(response);
     if(response.data.status === 'ok') {
+      props.setLogInStatus(true);
       localStorage.setItem('token', response.data.user);
       navigate('/');
     }
