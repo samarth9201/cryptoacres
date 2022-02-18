@@ -1,10 +1,10 @@
-import express from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
-import 'dotenv/config'
+import express from "express";
+import cors from "cors";
+import bodyParser from "body-parser";
+import mongoose from "mongoose";
+import "dotenv/config";
 
-import UserRoutes from './routes/UserRoutes.js';
+import UserRoutes from "./routes/UserRoutes.js";
 
 const app = express();
 const PORT = process.env.PORT;
@@ -15,29 +15,32 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 //Routes
-app.use('/users', UserRoutes);
-
+app.use("/users", UserRoutes);
 
 //MongoDB connection
 const mongodbConnectionURL = process.env.MONGODB_CONNECTION_URL;
 
-mongoose.connect(mongodbConnectionURL, {
+mongoose
+  .connect(mongodbConnectionURL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
-    })
-    .then(() => {
-        //connection successful
-        app.listen(PORT, () => {
-            console.log(`Server is running on Port ${PORT}`);
-            console.log(`Connected to mongodb`);
-        });
-    })
-    .catch((error) => {
-        //connection unsuccesssful
-        console.error(error.message);
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    //connection successful
+    app.listen(PORT, () => {
+      console.log(`Server is running on Port ${PORT}`);
+      console.log(`Connected to mongodb`);
     });
+  })
+  .catch((error) => {
+    //connection unsuccesssful
+    console.error(error.message);
+  });
 
 //Home Route
-app.get('/', (req, res) => {
-    res.send('Hello, World!');
+app.get("/", (req, res) => {
+  res.send("Hello, World!");
 });
+
+let currentDate = new Date();
+console.log(currentDate);
