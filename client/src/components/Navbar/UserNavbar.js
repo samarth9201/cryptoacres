@@ -10,10 +10,11 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
-import NavbarItems from "./NavbarItems";
+import UserNavbarItems from "./UserNavbarItems";
 import "../../css/Navbar.css";
+import metamaskLogo from "../../images/metamask.png";
 
-function ResponsiveAppBar() {
+function UserNavbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -69,7 +70,7 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {NavbarItems.map((item) => (
+              {UserNavbarItems.map((item) => (
                 <Link to={item.link} className="navbar-links">
                   <MenuItem key={item.id} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{item.title}</Typography>
@@ -95,7 +96,7 @@ function ResponsiveAppBar() {
             className="navbar-box"
             sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
           >
-            {NavbarItems.slice(0, 3).map((item) => (
+            {UserNavbarItems.slice(0, 4).map((item) => (
               <Link
                 to={item.link}
                 className="navbar-links navbar-links-desktop"
@@ -110,13 +111,20 @@ function ResponsiveAppBar() {
               </Link>
             ))}
 
-            <Link to="/user-signup" className="user-signup-btn">
-              <Button sx={{ my: 2, color: "black", display: "block" }}>
-                Signup
-              </Button>
+            <Link to="/metamask-wallet" className="user-navbar-user-signup-btn">
+              <img
+                src={metamaskLogo}
+                style={{
+                  width: 45,
+                  height: 45,
+                  paddingTop: 10,
+                  marginRight: 10,
+                }}
+                alt="metamask-logo"
+              />
             </Link>
 
-            <Link to="/user-login" className="user-login-btn">
+            <Link to="/logout" className="user-login-btn">
               <Button
                 variant="contained"
                 sx={{
@@ -126,7 +134,7 @@ function ResponsiveAppBar() {
                   backgroundColor: "#014DFF",
                 }}
               >
-                Login
+                Logout
               </Button>
             </Link>
           </Box>
@@ -136,4 +144,4 @@ function ResponsiveAppBar() {
   );
 }
 
-export default ResponsiveAppBar;
+export default UserNavbar;

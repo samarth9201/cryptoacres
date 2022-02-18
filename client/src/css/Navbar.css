@@ -1,35 +1,42 @@
 .navbar {
-    background-color: white;
+  background-color: white;
 }
 
 .navbar-logo {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .navbar-box {
-    margin-left: 25%;
+  margin-left: 25%;
 }
 
 .navbar-links {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .navbar-links-desktop {
-    margin-right: 3%;
+  margin-right: 3%;
+  white-space: nowrap;
+  text-align: center;
 }
 
 .menu-icon {
-    color: black;
+  color: black;
 }
 
 .user-signup-btn {
-    margin-left: 40%;
-    text-decoration: none;
+  margin-left: 40%;
+  text-decoration: none;
 }
 
 .user-login-btn {
-    margin-left: 3%;
-    text-decoration: none;
+  margin-left: 3%;
+  text-decoration: none;
+}
+
+.user-navbar-user-signup-btn {
+  margin-left: 18%;
+  text-decoration: none;
 }

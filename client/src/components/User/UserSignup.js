@@ -1,27 +1,30 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
-import '../../css/User.css';
-import { addUser } from '../../service/userAPI';
+import * as React from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Link } from "react-router-dom";
+import "../../css/User.css";
+import { addUser } from "../../service/userAPI";
 import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-        CRYPTOACRES
-      {' '}
-      {new Date().getFullYear()}
-      {'.'}
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      CRYPTOACRES {new Date().getFullYear()}
+      {"."}
     </Typography>
   );
 }
@@ -35,25 +38,25 @@ function UserSignup(props) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const user = {
-        firstName: data.get('firstName'),
-        lastName: data.get('lastName'),
-        email: data.get('email'),
-        password: data.get('password'),
+      firstName: data.get("firstName"),
+      lastName: data.get("lastName"),
+      email: data.get("email"),
+      password: data.get("password"),
     };
 
     //send this data to backend to signup user
     //once user is successfully signed up redirect them to home page / marketplace
     const response = await addUser(user);
     // console.log(response);
-    if(response.data.status === 'ok') {
-      props.setLogInStatus(true);
-      localStorage.setItem('token', response.data.user);
-      navigate('/');
-    }
-    else {
+    if (response.data.status === "ok") {
+      props.setClient({ logInStatus: true, type: "user" });
+      localStorage.setItem("token", response.data.user);
+      localStorage.setItem("type", "user");
+      navigate("/");
+    } else {
       //something went wrong -- invaild credentials
-    } 
-  };
+    }
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -62,18 +65,24 @@ function UserSignup(props) {
         <Box
           sx={{
             marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" autoComplete="off" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box
+            component="form"
+            autoComplete="off"
+            noValidate
+            onSubmit={handleSubmit}
+            sx={{ mt: 3 }}
+          >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -127,10 +136,8 @@ function UserSignup(props) {
               Sign Up
             </Button>
 
-            <div className='signup-div'>
-                <Link to='/user-login'>
-                  Already have an account? Sign in
-                </Link>
+            <div className="signup-div">
+              <Link to="/user-login">Already have an account? Sign in</Link>
             </div>
           </Box>
         </Box>

@@ -1,26 +1,29 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
-import '../../css/User.css';
-import { loginUser } from '../../service/userAPI';
+import * as React from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Link } from "react-router-dom";
+import "../../css/User.css";
+import { loginUser } from "../../service/userAPI";
 import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-        CRYPTOACRES
-      {' '}
-      {new Date().getFullYear()}
-      {'.'}
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      CRYPTOACRES {new Date().getFullYear()}
+      {"."}
     </Typography>
   );
 }
@@ -35,8 +38,8 @@ function UserLogin(props) {
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
     const user = {
-      email: data.get('email'),
-      password: data.get('password'),
+      email: data.get("email"),
+      password: data.get("password"),
     };
 
     //send this data to backend to login user
@@ -44,15 +47,15 @@ function UserLogin(props) {
     const response = await loginUser(user);
     console.log(response.data);
 
-    if(response.data.status === 'ok') {
-      props.setLogInStatus(true);
-      localStorage.setItem('token', response.data.user);
-      navigate('/');
+    if (response.data.status === "ok") {
+      props.setClient({ logInStatus: true, type: "user" });
+      localStorage.setItem("token", response.data.user);
+      localStorage.setItem("type", "user");
+      navigate("/");
+    } else {
+      alert("Invalid username or password");
     }
-    else {
-      alert('Invalid username or password');
-    }
-  };
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -61,28 +64,34 @@ function UserLogin(props) {
         <Box
           sx={{
             marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Login
           </Typography>
 
-          <ul className='user-login-list'>
-            <Link to = '/user-login' className='user-login-user'>
-              <li className='user-login-list-item-user'>User</li>
+          <ul className="user-login-list">
+            <Link to="/user-login" className="user-login-user">
+              <li className="user-login-list-item-user">User</li>
             </Link>
-            <Link to = '/broker-login' className='user-login-broker'>
-              <li className='user-login-list-item-broker'>Broker</li>
+            <Link to="/broker-login" className="user-login-broker">
+              <li className="user-login-list-item-broker">Broker</li>
             </Link>
           </ul>
 
-          <Box component="form" autoComplete="off" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box
+            component="form"
+            autoComplete="off"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ mt: 1 }}
+          >
             <TextField
               margin="normal"
               required
@@ -113,10 +122,8 @@ function UserLogin(props) {
               Sign In
             </Button>
 
-            <div className='signup-div'>
-            <Link to='/user-signup'>
-                {"Don't have an account? Sign Up"}
-            </Link>
+            <div className="signup-div">
+              <Link to="/user-signup">{"Don't have an account? Sign Up"}</Link>
             </div>
           </Box>
         </Box>

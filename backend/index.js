@@ -41,6 +41,3 @@ mongoose
 app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
-
-let currentDate = new Date();
-console.log(currentDate);
