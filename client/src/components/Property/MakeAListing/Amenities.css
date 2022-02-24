@@ -1,0 +1,23 @@
+.checkbox-list {
+  list-style: none;
+}
+.checkbox-list-item {
+  display: inline-block;
+  margin-right: 15px;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.checkbox-input {
+  visibility: hidden;
+}
+.checkbox-label {
+  cursor: pointer;
+  padding: 10px;
+  border: 2px solid whitesmoke;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+.checkbox-input:checked + .checkbox-label {
+  border: 2px solid #42526e;
+}

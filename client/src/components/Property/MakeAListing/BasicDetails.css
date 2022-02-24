@@ -1,0 +1,27 @@
+.radio-list-basic-details {
+  list-style: none;
+}
+
+.radio-list {
+  list-style: none;
+  margin-top: 0;
+}
+.radio-list-item {
+  display: inline-block;
+  margin-right: 15px;
+  padding: 5px;
+  margin: 10px;
+}
+.radio-input {
+  visibility: hidden;
+}
+.radio-label {
+  cursor: pointer;
+  padding: 10px;
+  border: 2px solid whitesmoke;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+.radio-input:checked + .radio-label {
+  border: 2px solid #42526e;
+}

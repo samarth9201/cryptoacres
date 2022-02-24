@@ -4,7 +4,6 @@ import UserNavbar from "./UserNavbar";
 import BrokerNavbar from "./BrokerNavbar";
 
 function Navbar(props) {
-  console.log("here");
   let navbar = <ResponsiveAppBar />;
   if (props.client.logInStatus && props.client.type === "user") {
     navbar = <UserNavbar />;
