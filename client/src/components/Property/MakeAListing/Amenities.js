@@ -2,12 +2,15 @@ import React from "react";
 import AmenitiesForm from "./AmenitiesForm";
 import ProgressBar from "./ProgressBar";
 
-function Amenities() {
+function Amenities(props) {
   const currentActiveStep = 3;
   return (
     <>
       <ProgressBar currentActiveStep={currentActiveStep} />
-      <AmenitiesForm />
+      <AmenitiesForm
+        property={props.property}
+        setProperty={props.setProperty}
+      />
     </>
   );
 }

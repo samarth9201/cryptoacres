@@ -19,7 +19,7 @@ const ownershipType = [
   "Power of Attorney",
 ];
 
-function PricingForm() {
+function PricingForm(props) {
   const navigate = useNavigate();
   const [ownership, setOwnerShip] = useState(ownershipType[0]);
 
@@ -33,7 +33,13 @@ function PricingForm() {
     const data = new FormData(event.currentTarget);
     console.log(data.get("price"));
     console.log(data.get("price per unit area"));
-    navigate("/make-a-listing/pricing");
+    props.setProperty((prevState) => ({
+      ...prevState,
+      ownership: ownership,
+      price: data.get("price"),
+      pricePerUnitArea: data.get("price per unit area"),
+    }));
+    navigate("/make-a-listing/post-property");
   }
   return (
     <>
@@ -114,7 +120,7 @@ function PricingForm() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Continue
+                Post Property
               </Button>
             </Box>
           </Box>

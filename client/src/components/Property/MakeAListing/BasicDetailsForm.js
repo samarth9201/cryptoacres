@@ -11,14 +11,18 @@ import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
-function BasicDetailsForm() {
+function BasicDetailsForm(props) {
   const navigate = useNavigate();
   const [propertyType, setPropertyType] = useState("");
   const [propertyTypeTwo, setPropertyTypeTwo] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(propertyType + " " + propertyTypeTwo);
+    props.setProperty((prevState) => ({
+      ...prevState,
+      propertyType: propertyType,
+      propertyTypeTwo: propertyTypeTwo,
+    }));
     navigate("/make-a-listing/location-details");
   }
 

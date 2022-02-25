@@ -2,12 +2,12 @@ import React from "react";
 import PhotosForm from "./PhotosForm";
 import ProgressBar from "./ProgressBar";
 
-function Photos() {
+function Photos(props) {
   const currentActiveStep = 4;
   return (
     <>
       <ProgressBar currentActiveStep={currentActiveStep} />
-      <PhotosForm />
+      <PhotosForm property={props.property} setProperty={props.setProperty} />
     </>
   );
 }

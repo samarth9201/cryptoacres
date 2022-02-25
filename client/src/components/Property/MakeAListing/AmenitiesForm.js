@@ -18,7 +18,7 @@ import {
 
 const theme = createTheme();
 
-function AmenitiesForm() {
+function AmenitiesForm(props) {
   const navigate = useNavigate();
   const propertyAmenities = [];
 
@@ -45,7 +45,10 @@ function AmenitiesForm() {
         propertyAmenities.push(option.value);
       }
     });
-    console.log(propertyAmenities);
+    props.setProperty((prevState) => ({
+      ...prevState,
+      propertyAmenities: propertyAmenities,
+    }));
     navigate("/make-a-listing/photos");
   }
 

@@ -2,12 +2,12 @@ import React from "react";
 import PricingForm from "./PricingForm";
 import ProgressBar from "./ProgressBar";
 
-function Pricing() {
+function Pricing(props) {
   const currentActiveStep = 5;
   return (
     <>
       <ProgressBar currentActiveStep={currentActiveStep} />
-      <PricingForm />
+      <PricingForm property={props.property} setProperty={props.setProperty} />
     </>
   );
 }

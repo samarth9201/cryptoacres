@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
-function LocationDetailsForm() {
+function LocationDetailsForm(props) {
   const navigate = useNavigate();
   function handleSubmit(event) {
     event.preventDefault();
@@ -21,7 +21,10 @@ function LocationDetailsForm() {
       locality: data.get("locality"),
       society: data.get("society"),
     };
-    console.log(locationDetails);
+    props.setProperty((prevState) => ({
+      ...prevState,
+      locationDetails: locationDetails,
+    }));
     navigate("/make-a-listing/property-profile");
   }
 

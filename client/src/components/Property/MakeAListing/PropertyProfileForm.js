@@ -37,7 +37,7 @@ function getNextTenYears() {
   return nextTenYears;
 }
 
-function PropertyProfileForm() {
+function PropertyProfileForm(props) {
   const navigate = useNavigate();
   const [currAreaUnit, setCurrAreaUnit] = useState(areaUnit[0]);
   const [expectedMonth, setExpectedMonth] = useState(months[0]);
@@ -60,23 +60,37 @@ function PropertyProfileForm() {
 
   function handleFurnishingChange(event) {
     setFurnishing(event.target.value);
-    console.log(event.target.value);
   }
 
   function handleParkingChange(event) {
     setParking(event.target.value);
-    console.log(event.target.value);
   }
 
   function handleAvailabilityChange(event) {
     setAvailabilityStatus(event.target.value);
-    console.log(event.target.value);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    //const data = new FormData(event.currentTarget);
-
+    const data = new FormData(event.currentTarget);
+    const propertyProfile = {
+      bedrooms: data.get("bedrooms"),
+      bathrooms: data.get("bathrooms"),
+      balconies: data.get("balconies"),
+      carpetArea: data.get("carpetArea"),
+      builtUpArea: data.get("builtUpArea"),
+      areaUnit: currAreaUnit,
+      furnishing: furnishing,
+      parking: parking,
+      availabilityStatus: availabilityStatus,
+      ageOfProperty: data.get("ageOfProperty"),
+      expectedYear: expectedYear,
+      expectedMonth: expectedMonth,
+    };
+    props.setProperty((prevState) => ({
+      ...prevState,
+      propertyProfile: propertyProfile,
+    }));
     navigate("/make-a-listing/amenities");
   }
   return (
@@ -124,7 +138,7 @@ function PropertyProfileForm() {
                     id="outlined-basic"
                     label="Bathrooms"
                     variant="outlined"
-                    name="bedrooms"
+                    name="bathrooms"
                     type="number"
                     fullWidth
                     style={{ marginTop: 20, marginBottom: 5 }}

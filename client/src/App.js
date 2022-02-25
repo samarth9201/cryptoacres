@@ -21,10 +21,11 @@ import PropertyProfile from "./components/Property/MakeAListing/PropertyProfile"
 import Photos from "./components/Property/MakeAListing/Photos";
 import Pricing from "./components/Property/MakeAListing/Pricing";
 import Amenities from "./components/Property/MakeAListing/Amenities";
+import PostProperty from "./components/Property/MakeAListing/PostProperty";
 
 function App() {
   const [client, setClient] = useState(initialClient);
-
+  const [property, setProperty] = useState({});
   return (
     <>
       <Router>
@@ -51,19 +52,40 @@ function App() {
 
           <Route
             path="/make-a-listing/basic-details"
-            element={<BasicDetails />}
+            element={
+              <BasicDetails property={property} setProperty={setProperty} />
+            }
           />
           <Route
             path="/make-a-listing/location-details"
-            element={<LocationDetails />}
+            element={
+              <LocationDetails property={property} setProperty={setProperty} />
+            }
           />
           <Route
             path="/make-a-listing/property-profile"
-            element={<PropertyProfile />}
+            element={
+              <PropertyProfile property={property} setProperty={setProperty} />
+            }
           />
-          <Route path="/make-a-listing/photos" element={<Photos />} />
-          <Route path="/make-a-listing/pricing" element={<Pricing />} />
-          <Route path="/make-a-listing/amenities" element={<Amenities />} />
+          <Route
+            path="/make-a-listing/amenities"
+            element={
+              <Amenities property={property} setProperty={setProperty} />
+            }
+          />
+          <Route
+            path="/make-a-listing/photos"
+            element={<Photos property={property} setProperty={setProperty} />}
+          />
+          <Route
+            path="/make-a-listing/pricing"
+            element={<Pricing property={property} setProperty={setProperty} />}
+          />
+          <Route
+            path="/make-a-listing/post-property"
+            element={<PostProperty property={property} />}
+          />
         </Routes>
       </Router>
     </>

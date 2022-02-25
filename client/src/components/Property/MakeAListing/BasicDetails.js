@@ -2,12 +2,15 @@ import React from "react";
 import BasicDetailsForm from "./BasicDetailsForm";
 import ProgressBar from "./ProgressBar";
 
-function BasicDetails() {
+function BasicDetails(props) {
   const currentActiveStep = 0;
   return (
     <>
       <ProgressBar currentActiveStep={currentActiveStep} />
-      <BasicDetailsForm />
+      <BasicDetailsForm
+        property={props.property}
+        setProperty={props.setProperty}
+      />
     </>
   );
 }

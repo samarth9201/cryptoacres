@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
@@ -7,16 +7,52 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "./BasicDetails.css";
 import { useNavigate } from "react-router-dom";
+import "./Photos.css";
+import { uploadImageToCloudinary } from "../../../service/propertyAPI";
 
 const theme = createTheme();
 
-function PhotosForm() {
+function PhotosForm(props) {
   const navigate = useNavigate();
+  const [imageList, setImageList] = useState([]);
+  const [imageUrlList, setImageUrlList] = useState([]);
+
+  function handleFileInputChange(event) {
+    const file = event.target.files[0];
+    uploadImage(file);
+    previewFile(file);
+    event.target.value = null;
+  }
+
+  function previewFile(file) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImageList([...imageList, reader.result]);
+    };
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
+    // console.log(imageUrlList);
+    props.setProperty((prevState) => ({
+      ...prevState,
+      imageUrlList: imageUrlList,
+    }));
     navigate("/make-a-listing/pricing");
   }
+
+  async function uploadImage(fileInput) {
+    const data = new FormData();
+    data.append("file", fileInput);
+    data.append("upload_preset", "s0gjvwc6");
+    data.append("cloud_name", "difo9l89z");
+    const res = await uploadImageToCloudinary(data);
+    const imgURL = await res.data.url;
+    console.log(imgURL);
+    setImageUrlList((prevState) => [...prevState, imgURL]);
+  }
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -36,10 +72,30 @@ function PhotosForm() {
               onSubmit={handleSubmit}
               noValidate
               sx={{ mt: 1 }}
+              encType="multipart/form-data"
             >
               <Typography component="h2" variant="h5">
                 Photos
               </Typography>
+
+              <Button
+                variant="contained"
+                className="select-images-btn"
+                style={{ margin: 20, display: "block" }}
+              >
+                <input
+                  type="file"
+                  name="fileToUpload"
+                  id="fileToUpload"
+                  onChange={handleFileInputChange}
+                  style={{ display: "none" }}
+                />
+                <label for="fileToUpload">Upload Images</label>
+              </Button>
+
+              {imageList.map((item) => (
+                <img src={item} alt="chosen" className="uploaded-image" />
+              ))}
 
               <Button
                 type="submit"
