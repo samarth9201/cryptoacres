@@ -1,0 +1,12 @@
+.title-div {
+  display: flex;
+  align-content: center;
+  margin: 0px 20px;
+}
+
+.title-span {
+  margin: 50px auto;
+  padding: 10px 100px;
+  border: 2px solid #42526e;
+  border-radius: 10px;
+}

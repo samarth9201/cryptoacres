@@ -1,0 +1,43 @@
+.property-card {
+  display: flex;
+
+  margin: 20px 20px;
+  border: 2px solid #42526e;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.property-card-img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.posted-by {
+  display: inline-block;
+  padding: 10px;
+  margin-top: 10px;
+  border: 2px solid #42526e;
+  border-radius: 10px;
+  font-size: large;
+  text-align: left;
+}
+
+.property-card-item {
+  padding: 10px;
+  padding-top: 20px;
+  font-size: large;
+  text-align: left;
+}
+
+@media screen and (min-width: 780px) {
+  .posted-by,
+  .property-card-item {
+    margin-left: 50px;
+  }
+}
+
+.proceed-to-verification-btn {
+  margin-top: 55px;
+  padding: 10px 40px;
+  white-space: nowrap;
+}
