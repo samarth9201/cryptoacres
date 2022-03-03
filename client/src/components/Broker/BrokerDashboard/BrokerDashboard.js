@@ -1,8 +1,9 @@
 import React from "react";
 import "./BrokerDashboard.css";
-import PropertyCard from "./PropertyCard";
+import PropertyCard from "../PropertyCard/PropertyCard";
 import Title from "./Title";
 import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
 
 const myProperty = {
   propertyId: "1234",
@@ -73,9 +74,12 @@ function BrokerDashboard() {
       <Typography component="h3" variant="h5" style={{ marginLeft: 30 }}>
         Property Listings
       </Typography>
-      {propertiesToVerify.map((property) => {
-        return <PropertyCard property={property} />;
-      })}
+
+      <Paper style={{ padding: 20, margin: 20 }} elevation={3}>
+        {propertiesToVerify.map((property) => {
+          return <PropertyCard property={property} />;
+        })}
+      </Paper>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import BasicDetailsForm from "./BasicDetailsForm";
-import ProgressBar from "./ProgressBar";
+import ProgressBar from "../ProgressBar";
 
 function BasicDetails(props) {
   const currentActiveStep = 0;

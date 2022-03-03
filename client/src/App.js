@@ -12,16 +12,17 @@ import MakeAListing from "./components/Property/MakeAListing/MakeAListing";
 import ContactUs from "./components/ContactUs";
 import MetamaskWallet from "./components/MetamaskWallet";
 import Logout from "./components/Logout";
-import BrokerDashboard from "./components/Broker/BrokerDashboard";
+import BrokerDashboard from "./components/Broker/BrokerDashboard/BrokerDashboard";
 import Navbar from "./components/Navbar/Navbar";
 import { initialClient } from "./utils/AuthenticateUser";
-import BasicDetails from "./components/Property/MakeAListing/BasicDetails";
-import LocationDetails from "./components/Property/MakeAListing/LocationDetails";
-import PropertyProfile from "./components/Property/MakeAListing/PropertyProfile";
-import Photos from "./components/Property/MakeAListing/Photos";
-import Pricing from "./components/Property/MakeAListing/Pricing";
-import Amenities from "./components/Property/MakeAListing/Amenities";
+import BasicDetails from "./components/Property/MakeAListing/BasicDetails/BasicDetails";
+import LocationDetails from "./components/Property/MakeAListing/LocationDetails/LocationDetails";
+import PropertyProfile from "./components/Property/MakeAListing/PropertyProfile/PropertyProfile";
+import Photos from "./components/Property/MakeAListing/Photos/Photos";
+import Pricing from "./components/Property/MakeAListing/Pricing/Pricing";
+import Amenities from "./components/Property/MakeAListing/Amenities/Amenities";
 import PostProperty from "./components/Property/MakeAListing/PostProperty";
+import VerifyProperty from "./components/Broker/VerifyProperty";
 
 function App() {
   const [client, setClient] = useState(initialClient);
@@ -85,6 +86,10 @@ function App() {
           <Route
             path="/make-a-listing/post-property"
             element={<PostProperty property={property} />}
+          />
+          <Route
+            path="/verify-property/:propertyId"
+            element={<VerifyProperty />}
           />
         </Routes>
       </Router>

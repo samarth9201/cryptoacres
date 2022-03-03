@@ -1,6 +1,6 @@
 import React from "react";
 import PricingForm from "./PricingForm";
-import ProgressBar from "./ProgressBar";
+import ProgressBar from "../ProgressBar";
 
 function Pricing(props) {
   const currentActiveStep = 5;

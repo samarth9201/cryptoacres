@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import TextField from "@mui/material/TextField";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import "./BasicDetails.css";
+import "../BasicDetails/BasicDetails.css";
 import Grid from "@mui/material/Grid";
 import { useNavigate } from "react-router-dom";
 

@@ -3,18 +3,11 @@ import "./PropertyCard.css";
 import { Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-
-function numDifferentiation(value) {
-  var val = Math.abs(value);
-  if (val >= 10000000) {
-    val = (val / 10000000).toFixed(2) + " Cr";
-  } else if (val >= 100000) {
-    val = (val / 100000).toFixed(2) + " Lac";
-  }
-  return val;
-}
+import { useNavigate } from "react-router-dom";
+import numDifferentiation from "../../../utils/NumDifferentiation";
 
 function PropertyCard(props) {
+  const navigate = useNavigate();
   const property = props.property;
   const postedBy =
     "Posted by " + property.owner.firstName + " " + property.owner.lastName;
@@ -24,6 +17,10 @@ function PropertyCard(props) {
     property.locationDetails.locality +
     ", " +
     property.locationDetails.city;
+
+  function proceedToVerificationHandle(event) {
+    navigate("/verify-property/" + property.propertyId);
+  }
 
   return (
     <div className="property-card">
@@ -69,13 +66,17 @@ function PropertyCard(props) {
             <Grid item xs={12} md={6} style={{ display: "flex" }}>
               <div className="property-card-item">
                 <Typography component="h4" variant="h5">
-                  {address}
+                  {address.toUpperCase()}
                 </Typography>
               </div>
             </Grid>
             <Grid item xs={12} md={6} style={{ display: "flex" }}>
               <div className="property-card-item">
-                <Typography component="h4" variant="h6">
+                <Typography
+                  component="h4"
+                  variant="h6"
+                  style={{ color: "#524C4C" }}
+                >
                   Posted on {property.postedOn}
                 </Typography>
               </div>
@@ -88,6 +89,7 @@ function PropertyCard(props) {
             >
               <Button
                 variant="contained"
+                onClick={proceedToVerificationHandle}
                 // className="proceed-to-verification-btn"
                 style={{
                   marginTop: 25,

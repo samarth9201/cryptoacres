@@ -1,6 +1,6 @@
 import React from "react";
 import AmenitiesForm from "./AmenitiesForm";
-import ProgressBar from "./ProgressBar";
+import ProgressBar from "../ProgressBar";
 
 function Amenities(props) {
   const currentActiveStep = 3;

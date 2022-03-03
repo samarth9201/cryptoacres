@@ -1,6 +1,6 @@
 import React from "react";
 import LocationDetailsForm from "./LocationDetailsForm";
-import ProgressBar from "./ProgressBar";
+import ProgressBar from "../ProgressBar";
 
 function LocationDetails(props) {
   const currentActiveStep = 1;
