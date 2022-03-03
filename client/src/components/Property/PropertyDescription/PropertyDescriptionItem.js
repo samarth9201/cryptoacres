@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 
 function PropertyDescriptionItem(props) {
   return (
-    <Grid item xs={4} md={3}>
+    <Grid item xs={6} md={3}>
       {" "}
       <Typography
         component="h4"

@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import ImageCarousel from "../Property/ImageCarousel/ImageCarousel";
 import PropertyDetails from "./PropertyDetails/PropertyDetails";
 import PropertyDescription from "../Property/PropertyDescription/PropertyDescription";
+import PropertyAmenities from "../Property/PropertyAmenities/PropertyAmenities";
 
 //Send a req to backend to get the
 //property to be verified
@@ -80,7 +81,7 @@ function VerifyProperty() {
         <PropertyDescription property={property} />
       </Grid>
       <Grid item xs={12} md={12}>
-        {/* Property Amenities */}
+        <PropertyAmenities property={property} />
       </Grid>
     </Grid>
   );
