@@ -1,8 +1,6 @@
 import React from "react";
-import PropertyCard from "../PropertyCard/PropertyCard";
-import Title from "./Title";
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
+import PropertyCard from "./PropertyCard";
+import Grid from "@mui/material/Grid";
 
 const myProperty = {
   propertyId: "1234",
@@ -19,9 +17,9 @@ const myProperty = {
     "http://res.cloudinary.com/difo9l89z/image/upload/v1646124506/h4c3ck8aqpqcbdkl8vk2.jpg",
   ],
   locationDetails: {
-    city: "Pune",
-    locality: "Shivaji Nagar",
-    society: "Paradise Apartment",
+    city: "Mumbai",
+    locality: "Andheri",
+    society: "Blue Heaven",
   },
   ownership: "Freehold",
   price: "6000000",
@@ -61,26 +59,21 @@ const myProperty = {
 };
 
 //Send a req to backend to get all the
-//properties to be verified
-const propertiesToVerify = [myProperty, myProperty, myProperty];
+//properties which are for sale
+const properties = [myProperty, myProperty, myProperty, myProperty, myProperty];
 
-function BrokerDashboard() {
-  const title =
-    "You have " + propertiesToVerify.length + " new properties to verify";
+function PropertiesForSale() {
   return (
-    <>
-      <Title title={title} />
-      <Typography component="h3" variant="h5" style={{ marginLeft: 30 }}>
-        Property Listings
-      </Typography>
-
-      <Paper style={{ padding: 20, margin: 20 }} elevation={3}>
-        {propertiesToVerify.map((property) => {
-          return <PropertyCard property={property} />;
-        })}
-      </Paper>
-    </>
+    <Grid container spacing={2}>
+      {properties.map((property) => {
+        return (
+          <Grid item xs={12} md={4} style={{ padding: 15 }}>
+            <PropertyCard property={property} />
+          </Grid>
+        );
+      })}
+    </Grid>
   );
 }
 
-export default BrokerDashboard;
+export default PropertiesForSale;

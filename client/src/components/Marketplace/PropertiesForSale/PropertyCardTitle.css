@@ -1,0 +1,12 @@
+.property-card-title-div {
+  display: flex;
+  align-content: center;
+  margin: 0px 20px;
+}
+
+.property-card-title-span {
+  margin: 10px auto;
+  padding: 10px;
+  border: 2px solid #42526e;
+  border-radius: 20px;
+}

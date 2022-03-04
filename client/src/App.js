@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./css/App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-import Marketplace from "./components/Marketplace";
+import Marketplace from "./components/Marketplace/Marketplace";
 import About from "./components/About";
 import UserLogin from "./components/User/UserLogin";
 import UserSignup from "./components/User/UserSignup";
