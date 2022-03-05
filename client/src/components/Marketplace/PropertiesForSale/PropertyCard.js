@@ -8,8 +8,10 @@ import Grid from "@mui/material/Grid";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import TimelapseIcon from "@mui/icons-material/Timelapse";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 
 function PropertyCard(props) {
+  const navigate = useNavigate();
   const property = props.property;
   const title =
     property.locationDetails.society.toUpperCase() +
@@ -18,9 +20,19 @@ function PropertyCard(props) {
     ", " +
     property.locationDetails.city.toUpperCase();
   const price = "₹ " + numDifferentiation(parseInt(property.price));
+
+  function viewDetailsHandle() {
+    navigate("/view-property-details/" + property.propertyId);
+  }
+
   return (
     <>
-      <Paper elevation={3} style={{ paddingBottom: 20 }}>
+      <Paper
+        elevation={3}
+        style={{ paddingBottom: 20 }}
+        onClick={viewDetailsHandle}
+        className="property-card-paper"
+      >
         <img
           src={property.imageUrlList[0]}
           className="property-card-property-img"
@@ -61,6 +73,7 @@ function PropertyCard(props) {
               size="small"
               variant="contained"
               style={{ marginLeft: 30, backgroundColor: "#013A63" }}
+              onClick={viewDetailsHandle}
             >
               View Details
             </Button>

@@ -23,6 +23,7 @@ import Pricing from "./components/Property/MakeAListing/Pricing/Pricing";
 import Amenities from "./components/Property/MakeAListing/Amenities/Amenities";
 import PostProperty from "./components/Property/MakeAListing/PostProperty";
 import VerifyProperty from "./components/Broker/VerifyProperty";
+import ViewPropertyDetails from "./components/Marketplace/ViewPropertyDetails/ViewPropertyDetails";
 
 function App() {
   const [client, setClient] = useState(initialClient);
@@ -90,6 +91,10 @@ function App() {
           <Route
             path="/verify-property/:propertyId"
             element={<VerifyProperty />}
+          />
+          <Route
+            path="/view-property-details/:propertyId"
+            element={<ViewPropertyDetails />}
           />
         </Routes>
       </Router>

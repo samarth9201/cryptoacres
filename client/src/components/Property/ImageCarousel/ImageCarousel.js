@@ -18,7 +18,7 @@ function ImageCarousel(props) {
     setDisplayImgIndex((prevState) => (prevState + 1) % totalImages);
   }
   return (
-    <>
+    <div style={{ display: "flex", justifyContent: "center" }}>
       <div className="navigate-img-icon">
         <ArrowBackIosNewIcon onClick={previousImgHandle} />
       </div>
@@ -30,7 +30,7 @@ function ImageCarousel(props) {
       <div className="navigate-img-icon">
         <ArrowForwardIosIcon onClick={nextImgHandle} />
       </div>
-    </>
+    </div>
   );
 }
 

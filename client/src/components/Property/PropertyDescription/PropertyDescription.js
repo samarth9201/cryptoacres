@@ -19,7 +19,13 @@ function PropertyDescription(props) {
   }
   return (
     <>
-      <Paper style={{ padding: 20, margin: 20 }} elevation={3}>
+      <Paper
+        style={{
+          padding: 20,
+          margin: 20,
+        }}
+        elevation={3}
+      >
         <Typography
           component="h4"
           variant="h5"

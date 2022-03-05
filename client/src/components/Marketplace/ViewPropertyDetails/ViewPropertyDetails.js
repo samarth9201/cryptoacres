@@ -1,12 +1,12 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
-import ImageCarousel from "../Property/ImageCarousel/ImageCarousel";
-import PropertyDetails from "./PropertyDetails/PropertyDetails";
-import PropertyDescription from "../Property/PropertyDescription/PropertyDescription";
-import PropertyAmenities from "../Property/PropertyAmenities/PropertyAmenities";
+import ImageCarousel from "../../Property/ImageCarousel/ImageCarousel";
+import PropertyDescription from "../../Property/PropertyDescription/PropertyDescription";
+import PropertyAmenities from "../../Property/PropertyAmenities/PropertyAmenities";
+import PropertyDetails from "./PropertyDetails";
 
 //Send a req to backend to get the
-//property to be verified
+//property details
 const property = {
   propertyId: "1234",
   owner: {
@@ -22,9 +22,9 @@ const property = {
     "http://res.cloudinary.com/difo9l89z/image/upload/v1646124506/h4c3ck8aqpqcbdkl8vk2.jpg",
   ],
   locationDetails: {
-    city: "Pune",
-    locality: "Shivaji Nagar",
-    society: "Paradise Apartment",
+    city: "Mumbai",
+    locality: "Andheri",
+    society: "Blue Heaven",
   },
   ownership: "Freehold",
   price: "6000000",
@@ -63,7 +63,7 @@ const property = {
   propertyTypeTwo: "Apartment",
 };
 
-function VerifyProperty() {
+function ViewPropertyDetails() {
   return (
     <Grid container spacing={2} style={{ marginTop: 20 }}>
       <Grid item xs={12} md={6}>
@@ -82,4 +82,4 @@ function VerifyProperty() {
   );
 }
 
-export default VerifyProperty;
+export default ViewPropertyDetails;

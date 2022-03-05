@@ -1,3 +1,11 @@
+.property-card-paper {
+  transition: transform 0.2s; /* Animation */
+}
+
+.property-card-paper:hover {
+  transform: scale(1.01);
+}
+
 .property-card-property-img {
   max-width: 100%;
   border-top-left-radius: 4px;
