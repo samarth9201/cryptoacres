@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import "dotenv/config";
 
 import UserRoutes from "./routes/UserRoutes.js";
+import PropertyRoutes from "./routes/PropertyRoutes.js";
 
 const app = express();
 const PORT = process.env.PORT;
@@ -16,6 +17,7 @@ app.use(cors());
 
 //Routes
 app.use("/users", UserRoutes);
+app.use("/properties", PropertyRoutes);
 
 //MongoDB connection
 const mongodbConnectionURL = process.env.MONGODB_CONNECTION_URL;
