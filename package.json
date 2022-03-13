@@ -12,6 +12,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@openzeppelin/contracts": "^4.3.2"
-  }
+    "@openzeppelin/contracts": "^4.3.2",
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samarth9201/cryptoacres.git"
+  },
+  "bugs": {
+    "url": "https://github.com/samarth9201/cryptoacres/issues"
+  },
+  "homepage": "https://github.com/samarth9201/cryptoacres#readme"
 }
