@@ -10,7 +10,7 @@ const brokerSchema = mongoose.Schema({
     Personal: mongoose.SchemaTypes.Email,
     WorkCA: mongoose.SchemaTypes.Email,
   },
-  password: String, //
+  password: String,
   location: {
     country: String,
     state: String,
