@@ -43,7 +43,7 @@ const propertySchema = mongoose.Schema({
   pricePerUnitArea: String,
   propertyAmenities: [String],
   propertyProfile: {
-    ageOfProperty: Number,
+    ageOfProperty: String,
     areaUnit: String,
     availabilityStatus: String,
     balconies: String,

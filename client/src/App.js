@@ -50,7 +50,7 @@ function App() {
           <Route path="/make-a-listing" element={<MakeAListing />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/metamask-wallet" element={<MetamaskWallet />} />
-          <Route path="/logout" element={<Logout />} />
+          <Route path="/logout" element={<Logout setClient={setClient}/>} />
           <Route path="/broker-dashboard" element={<BrokerDashboard />} />
 
           <Route
