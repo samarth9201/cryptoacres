@@ -1,9 +1,8 @@
 import Broker from "../../models/Broker.js";
-import addProperty from "../Property/addProperty.js";
 
 async function addBroker(req, res) {
   try {
-    await Broker.create({
+    const brokerObject = {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       licenceNumber: req.body.licenceNumber,
@@ -18,8 +17,12 @@ async function addBroker(req, res) {
         state: req.body.location.state,
         city: req.body.location.city,
       },
+      propertiesToVerify: [req.body.propertiesToVerify],
       approvedProperties: [req.body.approvedProperties],
-    });
+    };
+
+    await Broker.create(brokerObject);
+
     res.json({ status: "ok" });
   } catch (error) {
     res.json({ status: "error", error });

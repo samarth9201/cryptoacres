@@ -15,15 +15,20 @@ const NavbarItems = [
     link: "/about",
   },
   {
-    id: 3,
-    title: "Login",
-    link: "/user-login",
+    id: 5,
+    title: "Metamask",
+    link: "/metamask-wallet",
   },
-  {
-    id: 4,
-    title: "Signup",
-    link: "/user-signup",
-  },
+  // {
+  //   id: 3,
+  //   title: "Login",
+  //   link: "/user-login",
+  // },
+  // {
+  //   id: 4,
+  //   title: "Signup",
+  //   link: "/user-signup",
+  // },
 ];
 
 export default NavbarItems;

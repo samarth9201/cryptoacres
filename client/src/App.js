@@ -43,7 +43,7 @@ function App() {
           />
           <Route
             path="/user-signup"
-            element={<UserSignup setClient={setClient} />}
+            element={<UserSignup client={client} setClient={setClient} />}
           />
           <Route path="/broker-login" element={<BrokerLogin />} />
           <Route path="/kyc" element={<Kyc />} />

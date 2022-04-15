@@ -5,7 +5,7 @@ function Logout(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    props.setClient({ logInStatus: false, type: "user" });
+    props.setClient({ logInStatus: false, type: props.client.type });
     navigate("/");    
   }, []);
   return (

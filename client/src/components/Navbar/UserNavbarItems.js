@@ -24,11 +24,11 @@ const UserNavbarItems = [
     title: "Metamask Wallet",
     link: "/metamask-wallet",
   },
-  {
-    id: 5,
-    title: "Logout",
-    link: "/logout",
-  },
+  // {
+  //   id: 5,
+  //   title: "Logout",
+  //   link: "/logout",
+  // },
 ];
 
 export default UserNavbarItems;

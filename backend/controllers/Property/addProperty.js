@@ -1,44 +1,44 @@
 import Property from "../../models/Property.js";
-import mongoose from "mongoose";
-import express from "express";
+import Broker from "../../models/Broker.js";
 
 async function addProperty(req, res) {
-  console.log("make a listing request received")
-  
-  let listedProperty = {
-    imageUrlList: req.body.imageUrlList,
-    locationDetails: {
-      city: req.body.locationDetails.city,
-      locality: req.body.locationDetails.locality,
-      society: req.body.locationDetails.society,
-    },
-    ownership: req.body.ownership,
-    price: req.body.price,
-    pricePerUnitArea: req.body.pricePerUnitArea,
-    propertyAmenities: req.body.propertyAmenities,
-    propertyProfile: {
-      ageOfProperty: req.body.propertyProfile.ageOfProperty,
-      areaUnit: req.body.propertyProfile.areaUnit,
-      availabilityStatus: req.body.propertyProfile.availabilityStatus,
-      balconies: req.body.propertyProfile.balconies,
-      bathrooms: req.body.propertyProfile.bathrooms,
-      bedrooms: req.body.propertyProfile.bedrooms,
-      builtUpArea: req.body.propertyProfile.builtUpArea,
-      carpetArea: req.body.propertyProfile.carpetArea,
-      expectedMonth: req.body.propertyProfile.expectedMonth,
-      expectedYear: req.body.propertyProfile.expectedYear,
-      furnishing: req.body.propertyProfile.furnishing,
-      parking: req.body.propertyProfile.parking,
-    },
-    propertyType: req.body.propertyType,
-    propertyTypeTwo: req.body.propertyTypeTwo,
-  };
-
-  console.log(myObject);
-
   try {
-    
+    const listedProperty = {
+      imageUrlList: req.body.imageUrlList,
+      locationDetails: {
+        city: req.body.locationDetails.city,
+        locality: req.body.locationDetails.locality,
+        society: req.body.locationDetails.society,
+      },
+      ownership: req.body.ownership,
+      price: req.body.price,
+      pricePerUnitArea: req.body.pricePerUnitArea,
+      propertyAmenities: req.body.propertyAmenities,
+      propertyProfile: {
+        ageOfProperty: req.body.propertyProfile.ageOfProperty,
+        areaUnit: req.body.propertyProfile.areaUnit,
+        availabilityStatus: req.body.propertyProfile.availabilityStatus,
+        balconies: req.body.propertyProfile.balconies,
+        bathrooms: req.body.propertyProfile.bathrooms,
+        bedrooms: req.body.propertyProfile.bedrooms,
+        builtUpArea: req.body.propertyProfile.builtUpArea,
+        carpetArea: req.body.propertyProfile.carpetArea,
+        expectedMonth: req.body.propertyProfile.expectedMonth,
+        expectedYear: req.body.propertyProfile.expectedYear,
+        furnishing: req.body.propertyProfile.furnishing,
+        parking: req.body.propertyProfile.parking,
+      },
+      propertyType: req.body.propertyType,
+      propertyTypeTwo: req.body.propertyTypeTwo,
+    };
+
     await Property.create(listedProperty);
+
+    //assign a broker to verify this property
+    const broker = await Broker.findOne({ "location.city": req.body.locationDetails.city });
+    console.log("broker found!!");
+    console.log(broker);
+
     res.json({ status: "ok" });
   } catch (error) {
     res.json({ status: "error", error });

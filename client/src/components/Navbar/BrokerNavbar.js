@@ -111,20 +111,19 @@ function BrokerNavbar() {
               </Link>
             ))}
 
-            <Link to="/metamask-wallet" className="user-signup-btn">
+            <Link to="/metamask-wallet" className="user-navbar-user-signup-btn">
               <img
                 src={metamaskLogo}
                 style={{
-                  width: 45,
-                  height: 45,
-                  paddingTop: 10,
-                  marginRight: 10,
+                  width: 60,
+                  height: 60,
+                  marginLeft: 80,
                 }}
                 alt="metamask-logo"
               />
             </Link>
 
-            <Link to="/logout" className="user-login-btn">
+            {/* <Link to="/logout" className="user-login-btn">
               <Button
                 variant="contained"
                 sx={{
@@ -136,7 +135,7 @@ function BrokerNavbar() {
               >
                 Logout
               </Button>
-            </Link>
+            </Link> */}
           </Box>
         </Toolbar>
       </Container>

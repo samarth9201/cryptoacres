@@ -16,6 +16,7 @@ const brokerSchema = mongoose.Schema({
     state: String,
     city: String,
   },
+  propertiesToVerify: [String],
   approvedProperties: [String], //saves array of unique propertyIds
   //incentives, properties sold?
 });

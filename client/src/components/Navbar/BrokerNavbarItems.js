@@ -19,11 +19,11 @@ const BrokerNavbarItems = [
     title: "Metamask Wallet",
     link: "/metamask-wallet",
   },
-  {
-    id: 4,
-    title: "Logout",
-    link: "/logout",
-  },
+  // {
+  //   id: 4,
+  //   title: "Logout",
+  //   link: "/logout",
+  // },
 ];
 
 export default BrokerNavbarItems;

@@ -12,6 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import NavbarItems from "./NavbarItems";
 import "../../css/Navbar.css";
+import metamaskLogo from "../../images/metamask.png";
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -110,7 +111,19 @@ function ResponsiveAppBar() {
               </Link>
             ))}
 
-            <Link to="/user-signup" className="user-signup-btn">
+            <Link to="/metamask-wallet" className="user-navbar-user-signup-btn">
+              <img
+                src={metamaskLogo}
+                style={{
+                  width: 60,
+                  height: 60,
+                  marginLeft: 295,
+                }}
+                alt="metamask-logo"
+              />
+            </Link>
+
+            {/* <Link to="/user-signup" className="user-signup-btn">
               <Button sx={{ my: 2, color: "black", display: "block" }}>
                 Signup
               </Button>
@@ -128,7 +141,7 @@ function ResponsiveAppBar() {
               >
                 Login
               </Button>
-            </Link>
+            </Link> */}
           </Box>
         </Toolbar>
       </Container>
