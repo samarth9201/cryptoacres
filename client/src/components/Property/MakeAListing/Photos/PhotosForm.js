@@ -90,11 +90,11 @@ function PhotosForm(props) {
                   onChange={handleFileInputChange}
                   style={{ display: "none" }}
                 />
-                <label for="fileToUpload">Upload Images</label>
+                <label htmlFor="fileToUpload">Upload Images</label>
               </Button>
 
-              {imageList.map((item) => (
-                <img src={item} alt="chosen" className="uploaded-image" />
+              {imageList.map((item, id) => (
+                <img key={id} src={item} alt="chosen" className="uploaded-image" />
               ))}
 
               <Button

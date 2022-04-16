@@ -13,9 +13,9 @@ function PropertyOptions(props) {
   return (
     <>
       <ul className="radio-list">
-        {propertyOptionsArray.map((property) => {
+        {propertyOptionsArray.map((property, id) => {
           return (
-            <li className="radio-list-item">
+            <li key={id} className="radio-list-item">
               <input
                 type="radio"
                 value={property.label}
@@ -24,7 +24,7 @@ function PropertyOptions(props) {
                 onChange={handleChangePropertyTypeTwo}
                 className="radio-input"
               />
-              <label className="radio-label" for={property.id}>
+              <label className="radio-label" htmlFor={property.id}>
                 {property.label}
               </label>
             </li>

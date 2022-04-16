@@ -64,7 +64,7 @@ function BasicDetailsForm(props) {
                     onChange={handleChangePropertyTypeOne}
                     className="radio-input"
                   />
-                  <label className="radio-label" for="radio1">
+                  <label className="radio-label" htmlFor="radio1">
                     Residential
                   </label>
                 </li>
@@ -77,7 +77,7 @@ function BasicDetailsForm(props) {
                     onChange={handleChangePropertyTypeOne}
                     className="radio-input"
                   />
-                  <label className="radio-label" for="radio2">
+                  <label className="radio-label" htmlFor="radio2">
                     Commercial
                   </label>
                 </li>

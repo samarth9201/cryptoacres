@@ -70,8 +70,8 @@ function PricingForm(props) {
               </Typography>
 
               <ul className="radio-list-basic-details">
-                {ownershipType.map((item) => (
-                  <li className="radio-list-item">
+                {ownershipType.map((item, id) => (
+                  <li key={id} className="radio-list-item">
                     <input
                       type="radio"
                       value={item}
@@ -80,7 +80,7 @@ function PricingForm(props) {
                       onChange={handleOwnershipChange}
                       className="radio-input"
                     />
-                    <label className="radio-label" for={item}>
+                    <label className="radio-label" htmlFor={item}>
                       {item}
                     </label>
                   </li>

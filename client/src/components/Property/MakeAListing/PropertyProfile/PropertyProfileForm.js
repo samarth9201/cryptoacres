@@ -221,7 +221,7 @@ function PropertyProfileForm(props) {
                         onChange={handleFurnishingChange}
                         className="radio-input"
                       />
-                      <label className="radio-label" for="radio1">
+                      <label className="radio-label" htmlFor="radio1">
                         Furnished
                       </label>
                     </li>
@@ -236,7 +236,7 @@ function PropertyProfileForm(props) {
                         onChange={handleFurnishingChange}
                         className="radio-input"
                       />
-                      <label className="radio-label" for="radio2">
+                      <label className="radio-label" htmlFor="radio2">
                         Semi-furnished
                       </label>
                     </li>
@@ -251,7 +251,7 @@ function PropertyProfileForm(props) {
                         onChange={handleFurnishingChange}
                         className="radio-input"
                       />
-                      <label className="radio-label" for="radio3">
+                      <label className="radio-label" htmlFor="radio3">
                         Unfurnished
                       </label>
                     </li>
@@ -275,7 +275,7 @@ function PropertyProfileForm(props) {
                         onChange={handleParkingChange}
                         className="radio-input"
                       />
-                      <label className="radio-label" for="radio4">
+                      <label className="radio-label" htmlFor="radio4">
                         Covered Parking
                       </label>
                     </li>
@@ -290,7 +290,7 @@ function PropertyProfileForm(props) {
                         onChange={handleParkingChange}
                         className="radio-input"
                       />
-                      <label className="radio-label" for="radio5">
+                      <label className="radio-label" htmlFor="radio5">
                         Open Parking
                       </label>
                     </li>
@@ -305,7 +305,7 @@ function PropertyProfileForm(props) {
                         onChange={handleParkingChange}
                         className="radio-input"
                       />
-                      <label className="radio-label" for="radio6">
+                      <label className="radio-label" htmlFor="radio6">
                         None
                       </label>
                     </li>
@@ -329,7 +329,7 @@ function PropertyProfileForm(props) {
                         onChange={handleAvailabilityChange}
                         className="radio-input"
                       />
-                      <label className="radio-label" for="radio7">
+                      <label className="radio-label" htmlFor="radio7">
                         Ready to move
                       </label>
                     </li>
@@ -344,7 +344,7 @@ function PropertyProfileForm(props) {
                         onChange={handleAvailabilityChange}
                         className="radio-input"
                       />
-                      <label className="radio-label" for="radio8">
+                      <label className="radio-label" htmlFor="radio8">
                         Under construction
                       </label>
                     </li>
