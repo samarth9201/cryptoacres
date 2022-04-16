@@ -12,6 +12,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 import "../css/User.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { API } from "../constants";
 
 function Copyright(props) {
   return (
@@ -35,9 +37,16 @@ function Otp(props) {
   async function handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    const address = await props.signer.getAddress();
     const otp = data.get("otp");
-    console.log(otp);
 
+    await axios.post(`${API}/api/users/signup/verify`, {
+      PublicKey: address,
+      otp: otp,
+    });
+    navigate('/')
+    alert("Email Verified Successfully")
+    console.log(otp);
   }
 
   return (
@@ -66,17 +75,9 @@ function Otp(props) {
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
-              
               <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="otp"
-                  label="OTP"
-                  id="otp"
-                />
+                <TextField required fullWidth name="otp" label="OTP" id="otp" />
               </Grid>
-              
             </Grid>
             <Button
               type="submit"
@@ -86,7 +87,6 @@ function Otp(props) {
             >
               Verify Otp
             </Button>
-
           </Box>
         </Box>
         <Copyright sx={{ mt: 5 }} />

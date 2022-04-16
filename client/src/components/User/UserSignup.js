@@ -52,11 +52,11 @@ function UserSignup(props) {
 
     await axios.post(`${API}/api/users/signup`, user);
 
+    navigate("/otp");
+
     await axios.post(`${API}/api/users/signup/sendotp`, {
       PublicKey: address,
     });
-
-    navigate("/otp");
 
     // //send this data to backend to signup user
     // //once user is successfully signed up redirect them to home page / marketplace
