@@ -25,6 +25,7 @@ import Amenities from "./components/Property/MakeAListing/Amenities/Amenities";
 import PostProperty from "./components/Property/MakeAListing/PostProperty";
 import VerifyProperty from "./components/Broker/VerifyProperty";
 import ViewPropertyDetails from "./components/Marketplace/ViewPropertyDetails/ViewPropertyDetails";
+import Otp from "./components/Otp";
 
 function App() {
   const [client, setClient] = useState(initialClient);
@@ -96,6 +97,10 @@ function App() {
           <Route
             path="/view-property-details/:propertyId"
             element={<ViewPropertyDetails />}
+          />
+          <Route
+            path="/otp"
+            element={<Otp />}
           />
         </Routes>
       </Router>

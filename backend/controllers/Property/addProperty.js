@@ -32,12 +32,20 @@ async function addProperty(req, res) {
       propertyTypeTwo: req.body.propertyTypeTwo,
     };
 
-    await Property.create(listedProperty);
-
+    console.log("listedProperty: ");
+    const response = await Property.create(listedProperty);
+    console.log("response : " + response);
+    
     //assign a broker to verify this property
     const broker = await Broker.findOne({ "location.city": req.body.locationDetails.city });
-    console.log("broker found!!");
-    console.log(broker);
+    if(!broker) {
+      console.log("No brokers available in the area");
+    }
+    else {
+      console.log("broker found");
+      console.log(broker);
+    }
+    
 
     res.json({ status: "ok" });
   } catch (error) {

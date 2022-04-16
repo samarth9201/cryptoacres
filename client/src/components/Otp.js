@@ -10,8 +10,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link } from "react-router-dom";
-import "../../css/User.css";
-import { addUser } from "../../service/userAPI";
+import "../css/User.css";
 import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
@@ -31,34 +30,14 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-function UserSignup(props) {
+function Otp(props) {
   const navigate = useNavigate();
   async function handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const user = {
-      firstName: data.get("firstName"),
-      lastName: data.get("lastName"),
-      email: data.get("email"),
-      username: data.get("username"),
-    };
+    const otp = data.get("otp");
+    console.log(otp);
 
-    navigate("/otp");
-    
-
-    // //send this data to backend to signup user
-    // //once user is successfully signed up redirect them to home page / marketplace
-    // const response = await addUser(user);
-
-    // // console.log(response);
-    // if (response.data.status === "ok") {
-    //   props.setClient({ logInStatus: true, type: "user" });
-    //   localStorage.setItem("token", response.data.user);
-    //   localStorage.setItem("type", "user");
-    //   navigate("/");
-    // } else {
-    //   //something went wrong -- invaild credentials
-    // }
   }
 
   return (
@@ -77,7 +56,7 @@ function UserSignup(props) {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            Enter OTP
           </Typography>
           <Box
             component="form"
@@ -87,44 +66,17 @@ function UserSignup(props) {
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                />
-              </Grid>
+              
               <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
-                  name="username"
-                  label="username"
-                  id="username"
+                  name="otp"
+                  label="OTP"
+                  id="otp"
                 />
               </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                />
-              </Grid>   
+              
             </Grid>
             <Button
               type="submit"
@@ -132,12 +84,9 @@ function UserSignup(props) {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Verify Otp
             </Button>
 
-            {/* <div className="signup-div">
-              <Link to="/user-login">Already have an account? Sign in</Link>
-            </div> */}
           </Box>
         </Box>
         <Copyright sx={{ mt: 5 }} />
@@ -146,4 +95,4 @@ function UserSignup(props) {
   );
 }
 
-export default UserSignup;
+export default Otp;
