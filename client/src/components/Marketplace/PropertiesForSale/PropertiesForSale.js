@@ -65,9 +65,9 @@ const properties = [myProperty, myProperty, myProperty, myProperty, myProperty];
 function PropertiesForSale() {
   return (
     <Grid container spacing={2} style={{paddingLeft: 50, paddingRight: 20}}>
-      {properties.map((property) => {
+      {properties.map((property, id) => {
         return (
-          <Grid item xs={12} md={3} style={{ padding: 15 }}>
+          <Grid key={id} item xs={12} md={3} style={{ padding: 15 }}>
             <PropertyCard property={property} />
           </Grid>
         );

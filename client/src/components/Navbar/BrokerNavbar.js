@@ -14,7 +14,7 @@ import BrokerNavbarItems from "./BrokerNavbarItems";
 import "../../css/Navbar.css";
 import metamaskLogo from "../../images/metamask.png";
 
-function BrokerNavbar() {
+function BrokerNavbar(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -70,8 +70,8 @@ function BrokerNavbar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {BrokerNavbarItems.map((item) => (
-                <Link to={item.link} className="navbar-links">
+              {BrokerNavbarItems.map((item, id) => (
+                <Link key={id} to={item.link} className="navbar-links">
                   <MenuItem key={item.id} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{item.title}</Typography>
                   </MenuItem>
@@ -111,17 +111,21 @@ function BrokerNavbar() {
               </Link>
             ))}
 
-            <Link to="/metamask-wallet" className="user-navbar-user-signup-btn">
+            <Button
+              onClick={props.connectWallet}
+              to="/metamask-wallet"
+              className="user-navbar-user-signup-btn"
+            >
               <img
                 src={metamaskLogo}
                 style={{
                   width: 60,
                   height: 60,
-                  marginLeft: 80,
+                  marginLeft: 295,
                 }}
                 alt="metamask-logo"
               />
-            </Link>
+            </Button>
 
             {/* <Link to="/logout" className="user-login-btn">
               <Button
