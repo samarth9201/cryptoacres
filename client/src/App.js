@@ -26,6 +26,8 @@ import PostProperty from "./components/Property/MakeAListing/PostProperty";
 import VerifyProperty from "./components/Broker/VerifyProperty";
 import ViewPropertyDetails from "./components/Marketplace/ViewPropertyDetails/ViewPropertyDetails";
 import Otp from "./components/Otp";
+import UserProperties from "./components/UserProperties/UserProperties";
+import UserProperty from "./components/UserProperties/UserProperty";
 
 function App() {
   const [client, setClient] = useState(initialClient);
@@ -101,6 +103,14 @@ function App() {
           <Route
             path="/otp"
             element={<Otp />}
+          />
+          <Route
+            path="/user-properties"
+            element={<UserProperties />}
+          />
+          <Route
+            path="/user-property/:propertyId"
+            element={<UserProperty />}
           />
         </Routes>
       </Router>

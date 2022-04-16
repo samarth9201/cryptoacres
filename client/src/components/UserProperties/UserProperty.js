@@ -1,8 +1,14 @@
 import React from "react";
-import PropertyCard from "./PropertyCard";
 import Grid from "@mui/material/Grid";
+import ImageCarousel from "../Property/ImageCarousel/ImageCarousel";
+import PropertyDescription from "../Property/PropertyDescription/PropertyDescription";
+import PropertyAmenities from "../Property/PropertyAmenities/PropertyAmenities";
+import PropertyDetails from "../Marketplace/ViewPropertyDetails/PropertyDetails";
+import UserPropertyDetails from "./UserPropertyDetails";
 
-const myProperty = {
+//Send a req to backend to get the
+//property details
+const property = {
   propertyId: "1234",
   owner: {
     ownerId: "123",
@@ -58,22 +64,23 @@ const myProperty = {
   propertyTypeTwo: "Apartment",
 };
 
-//Send a req to backend to get all the
-//properties which are for sale
-const properties = [myProperty, myProperty, myProperty, myProperty, myProperty];
-
-function PropertiesForSale() {
+function UserProperty() {
   return (
-    <Grid container spacing={2} style={{paddingLeft: 50, paddingRight: 20}}>
-      {properties.map((property) => {
-        return (
-          <Grid item xs={12} md={3} style={{ padding: 15 }}>
-            <PropertyCard property={property} />
-          </Grid>
-        );
-      })}
+    <Grid container spacing={2} style={{ marginTop: 20 }}>
+      <Grid item xs={12} md={6}>
+        <ImageCarousel imageUrlList={property.imageUrlList} />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <UserPropertyDetails property={property} />
+      </Grid>
+      <Grid item xs={12} md={12}>
+        <PropertyDescription property={property} />
+      </Grid>
+      <Grid item xs={12} md={12}>
+        <PropertyAmenities property={property} />
+      </Grid>
     </Grid>
   );
 }
 
-export default PropertiesForSale;
+export default UserProperty;

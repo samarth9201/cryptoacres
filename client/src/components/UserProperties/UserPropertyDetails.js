@@ -1,17 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import "./PropertyDetails.css";
-import numDifferentiation from "../../../utils/NumDifferentiation";
+import "../Marketplace/ViewPropertyDetails/PropertyDetails.css";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import Tooltip from "@mui/material/Tooltip";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import Divider from "@mui/material/Divider";
-import RemainingTime from "./RemainingTime";
+import TextField from "@mui/material/TextField";
 
-function PropertyDetails(props) {
+function UserPropertyDetails(props) {
   const property = props.property;
   const address =
     property.locationDetails.society +
@@ -20,9 +19,11 @@ function PropertyDetails(props) {
     ", " +
     property.locationDetails.city;
 
-  function handleBuyNow() {
-    console.log("clicked on buy now!");
-  }
+    const [sellingPrice, setSellingPrice] = useState(0);
+
+    function placeForSale() {
+        console.log(sellingPrice);
+    }
 
   return (
     <Paper
@@ -53,29 +54,25 @@ function PropertyDetails(props) {
               {property.owner.firstName + " " + property.owner.lastName}
             </Typography>
 
-            <Divider />
-
-            <Typography
-              component="h4"
-              variant="h6"
-              style={{ marginBottom: 10, marginTop: 20 }}
-            >
-              Selling price
-            </Typography>
-            <Typography component="h4" variant="h4">
-              {/* &#x20b9;  */}
-              ETH {" "}
-              {property.price}
-            </Typography>
-
+            <TextField
+                  required
+                  fullWidth
+                  id="sellingPrice"
+                  label="Selling Price (ETH)"
+                  name="sellingPrice"
+                  onChange={(event) => {
+                      setSellingPrice(event.target.value);
+                  }}
+            />
+            
             <Button
               variant="contained"
               style={{ marginTop: 20, paddingTop: 10, paddingBottom: 10 }}
               fullWidth
-              onClick={handleBuyNow}
+              onClick={placeForSale}
             >
               <AccountBalanceWalletIcon style={{ paddingRight: 10 }} />
-              Buy Now
+              Place for sale
             </Button>
           </div>
         </Grid>
@@ -84,4 +81,4 @@ function PropertyDetails(props) {
   );
 }
 
-export default PropertyDetails;
+export default UserPropertyDetails;

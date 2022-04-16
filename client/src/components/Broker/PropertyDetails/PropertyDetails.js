@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import "./PropertyDetails.css";
-import numDifferentiation from "../../../utils/NumDifferentiation";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
+import TextField from "@mui/material/TextField";
 
 function PropertyDetails(props) {
   const property = props.property;
@@ -14,6 +14,18 @@ function PropertyDetails(props) {
     property.locationDetails.locality +
     ", " +
     property.locationDetails.city;
+
+    const [issues, setIssues] = useState("");
+
+    function handleApprove() {
+      
+    }
+    
+    function handleReject() {
+
+    }
+
+
   return (
     <Paper
       style={{ padding: 20, marginRight: 20, marginLeft: 20 }}
@@ -33,8 +45,7 @@ function PropertyDetails(props) {
               style={{ color: "#524C4C", marginBottom: 10 }}
             >
               Posted by{" "}
-              {property.owner.firstName + " " + property.owner.lastName} on{" "}
-              {property.postedOn}
+              {property.owner.firstName + " " + property.owner.lastName}
             </Typography>
             <Typography
               component="h4"
@@ -44,17 +55,37 @@ function PropertyDetails(props) {
               Selling price
             </Typography>
             <Typography component="h4" variant="h4">
-              &#x20b9; {numDifferentiation(parseInt(property.price))}
+              {/* &#x20b9;  */}
+              ETH {" "} {property.price}
             </Typography>
-            <Button variant="contained" style={{ marginTop: 20 }} fullWidth>
-              Verify Now
+            
+            <Grid container spacing={2}>
+
+            <Grid item xs={6}>
+            <Button variant="contained" style={{ marginTop: 20 }} fullWidth onClick={handleApprove}>
+              Approve Listing
             </Button>
+            </Grid>
+            
+            <Grid item xs={6}>
+            <Button variant="contained" style={{ marginTop: 20, backgroundColor: "red" }} fullWidth onClick={handleReject}>
+              Reject Listing
+            </Button>
+            </Grid>
+            
+            </Grid>
+
           </div>
         </Grid>
+
         <Grid item xs={12} md={12}>
-          <Typography component="h4" variant="h6" style={{ marginBottom: 10 }}>
-            Issues Detected ???
-          </Typography>
+          <TextField
+            fullWidth
+            id="issues"
+            label="Issues Detected"
+            name="issues"
+            onChange={(event) => {setIssues(event.target.value)}}
+          />
         </Grid>
       </Grid>
     </Paper>

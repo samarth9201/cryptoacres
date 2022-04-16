@@ -20,15 +20,15 @@ function Marketplace() {
       </div>
 
       <Grid container spacing={2} style={{ marginTop: 40 }}>
-        <Grid item xs={12} md={2} style={{ backgroundColor: "yellow" }}>
+        {/* <Grid item xs={12} md={2} style={{ backgroundColor: "yellow" }}>
           <PropertyFilter />
-        </Grid>
-        <Grid item xs={12} md={8}>
+        </Grid> */}
+        <Grid>
           <PropertiesForSale />
         </Grid>
-        <Grid item xs={12} md={2} style={{ backgroundColor: "blue" }}>
+        {/* <Grid item xs={12} md={2} style={{ backgroundColor: "blue" }}>
           <ActivityLog />
-        </Grid>
+        </Grid> */}
       </Grid>
     </>
   );

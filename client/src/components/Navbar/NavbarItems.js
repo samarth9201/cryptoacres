@@ -6,13 +6,13 @@ const NavbarItems = [
   },
   {
     id: 1,
-    title: "Marketplace",
-    link: "/marketplace",
+    title: "About",
+    link: "/about",
   },
   {
     id: 2,
-    title: "About",
-    link: "/about",
+    title: "Contact Us",
+    link: "/contact-us",
   },
   {
     id: 5,
