@@ -4,8 +4,8 @@ function AmenitiesFormList(props) {
   return (
     <>
       <ul className="checkbox-list">
-        {props.list.map((option) => (
-          <li className="checkbox-list-item">
+        {props.list.map((option, id) => (
+          <li key={id} className="checkbox-list-item">
             <input
               type="checkbox"
               id={option.name}
@@ -13,7 +13,7 @@ function AmenitiesFormList(props) {
               value={option.value}
               className="checkbox-input"
             />
-            <label for={option.name} className="checkbox-label">
+            <label htmlFor={option.name} className="checkbox-label">
               {" "}
               {option.value}
             </label>
