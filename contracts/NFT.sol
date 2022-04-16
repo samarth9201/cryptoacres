@@ -9,9 +9,10 @@ contract NFTMarketplace is ERC721URIStorage {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
     Counters.Counter private _itemsSold;
+    Counters.Counter private _verified;
 
     uint256 listingPrice = 1 ether;
-    address payable owner;
+    address payable public owner;
 
     mapping(uint256 => MarketItem) public idToMarketItem;
     mapping(address => bool) public isVerifier;
@@ -78,6 +79,8 @@ contract NFTMarketplace is ERC721URIStorage {
             "Only Verified Accounts can be used to Verify Asset"
         );
 
+        _verified.increment();
+
         idToMarketItem[_tokenId].valuation = _valuation;
         idToMarketItem[_tokenId].valuationDate = block.timestamp;
         idToMarketItem[_tokenId].verified = true;
@@ -96,7 +99,7 @@ contract NFTMarketplace is ERC721URIStorage {
         idToMarketItem[tokenId] = MarketItem(
             tokenId,
             payable(msg.sender),
-            payable(address(this)),
+            payable(msg.sender),
             address(0),
             price,
             0,
@@ -105,7 +108,8 @@ contract NFTMarketplace is ERC721URIStorage {
             false
         );
 
-        _transfer(msg.sender, address(this), tokenId);
+        // _transfer(msg.sender, address(this), tokenId);
+        _itemsSold.increment();
         emit MarketItemCreated(
             tokenId,
             msg.sender,
@@ -163,10 +167,10 @@ contract NFTMarketplace is ERC721URIStorage {
     /* Returns all unsold market items */
     function fetchMarketItems() public view returns (MarketItem[] memory) {
         uint256 itemCount = _tokenIds.current();
-        uint256 unsoldItemCount = _tokenIds.current() - _itemsSold.current();
+        uint256 verified = _verified.current();
         uint256 currentIndex = 0;
 
-        MarketItem[] memory items = new MarketItem[](unsoldItemCount);
+        MarketItem[] memory items = new MarketItem[](verified);
         for (uint256 i = 0; i < itemCount; i++) {
             if (
                 idToMarketItem[i + 1].owner == address(this) &&
@@ -220,6 +224,25 @@ contract NFTMarketplace is ERC721URIStorage {
         MarketItem[] memory items = new MarketItem[](itemCount);
         for (uint256 i = 0; i < totalItemCount; i++) {
             if (idToMarketItem[i + 1].seller == msg.sender) {
+                uint256 currentId = i + 1;
+                MarketItem storage currentItem = idToMarketItem[currentId];
+                items[currentIndex] = currentItem;
+                currentIndex += 1;
+            }
+        }
+        return items;
+    }
+
+    function fetchUnverifiedTokens() public view returns(MarketItem[] memory){
+        uint256 itemCount = _tokenIds.current();
+        uint256 verified = _verified.current();
+        uint256 currentIndex = 0;
+
+        MarketItem[] memory items = new MarketItem[](itemCount - verified);
+        for (uint256 i = 0; i < itemCount; i++) {
+            if (
+                idToMarketItem[i + 1].verified == false
+            ) {
                 uint256 currentId = i + 1;
                 MarketItem storage currentItem = idToMarketItem[currentId];
                 items[currentIndex] = currentItem;
