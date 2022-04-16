@@ -14,7 +14,7 @@ import UserNavbarItems from "./UserNavbarItems";
 import "../../css/Navbar.css";
 import metamaskLogo from "../../images/metamask.png";
 
-function UserNavbar() {
+function UserNavbar(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -111,18 +111,21 @@ function UserNavbar() {
               </Link>
             ))}
 
-            <Link to="/metamask-wallet" className="user-navbar-user-signup-btn">
+            <Button
+              onClick={props.connectWallet}
+              to="/metamask-wallet"
+              className="user-navbar-user-signup-btn"
+            >
               <img
                 src={metamaskLogo}
                 style={{
                   width: 60,
                   height: 60,
-                  marginLeft: 80,
+                  marginLeft: 295,
                 }}
                 alt="metamask-logo"
               />
-            </Link>
-            
+            </Button>
 
             {/* <Link to="/logout" className="user-login-btn">
               <Button

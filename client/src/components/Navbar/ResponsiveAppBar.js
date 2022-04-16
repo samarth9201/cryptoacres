@@ -14,7 +14,7 @@ import NavbarItems from "./NavbarItems";
 import "../../css/Navbar.css";
 import metamaskLogo from "../../images/metamask.png";
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -70,8 +70,8 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {NavbarItems.map((item) => (
-                <Link to={item.link} className="navbar-links">
+              {NavbarItems.map((item, id) => (
+                <Link key={id} to={item.link} className="navbar-links">
                   <MenuItem key={item.id} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{item.title}</Typography>
                   </MenuItem>
@@ -96,8 +96,9 @@ function ResponsiveAppBar() {
             className="navbar-box"
             sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
           >
-            {NavbarItems.slice(0, 3).map((item) => (
+            {NavbarItems.slice(0, 3).map((item, id) => (
               <Link
+                key={id}
                 to={item.link}
                 className="navbar-links navbar-links-desktop"
               >
@@ -111,7 +112,11 @@ function ResponsiveAppBar() {
               </Link>
             ))}
 
-            <Link to="/metamask-wallet" className="user-navbar-user-signup-btn">
+            <Button
+              onClick={props.connectWallet}
+              to="/metamask-wallet"
+              className="user-navbar-user-signup-btn"
+            >
               <img
                 src={metamaskLogo}
                 style={{
@@ -121,7 +126,7 @@ function ResponsiveAppBar() {
                 }}
                 alt="metamask-logo"
               />
-            </Link>
+            </Button>
 
             {/* <Link to="/user-signup" className="user-signup-btn">
               <Button sx={{ my: 2, color: "black", display: "block" }}>

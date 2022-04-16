@@ -75,8 +75,8 @@ function BrokerDashboard() {
       </Typography>
 
       <Paper style={{ padding: 20, margin: 20 }} elevation={3}>
-        {propertiesToVerify.map((property) => {
-          return <PropertyCard property={property} />;
+        {propertiesToVerify.map((property, id) => {
+          return <PropertyCard key={id} property={property} />;
         })}
       </Paper>
     </>

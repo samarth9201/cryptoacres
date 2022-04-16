@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./css/App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/Home";
 import Marketplace from "./components/Marketplace/Marketplace";
 import About from "./components/About";
@@ -28,14 +28,54 @@ import ViewPropertyDetails from "./components/Marketplace/ViewPropertyDetails/Vi
 import Otp from "./components/Otp";
 import UserProperties from "./components/UserProperties/UserProperties";
 import UserProperty from "./components/UserProperties/UserProperty";
+import { ethers } from "ethers";
+import axios from "axios"
+import {API} from "./constants"
 
 function App() {
+  const navigate = useNavigate()
   const [client, setClient] = useState(initialClient);
   const [property, setProperty] = useState({});
+  const [signer, setSigner] = useState(null)
+  const [address, setAddress] = useState(null)
+  const [user, setUser] = useState(null)
+
+  const connectWallet = async () => {
+    try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      await provider.send("eth_requestAccounts", []);
+      const signer = provider.getSigner();
+      const address = await signer.getAddress();
+
+      var data = {
+        PublicKey: address,
+      };
+      var response = await axios.post(`${API}/api/users`, data);
+
+      setSigner(signer);
+
+      if (response.data.found === false) {
+        setAddress(address);
+        navigate('/user-signup/')
+      } else {
+        console.log(response.data)
+        setAddress(address);
+        setUser(response.data.user);
+        if(response.data.user.Verified === false){
+          console.log("Sending Mail")
+          var res = await axios.post(`${API}/api/users/signup/sendotp`, {PublicKey: address})
+          console.log(res)
+          navigate('/otp')
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
-      <Router>
-        <Navbar client={client} />
+      <>
+        <Navbar client={client} connectWallet={connectWallet} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/marketplace" element={<Marketplace />} />
@@ -46,14 +86,14 @@ function App() {
           />
           <Route
             path="/user-signup"
-            element={<UserSignup client={client} setClient={setClient} />}
+            element={<UserSignup client={client} setClient={setClient} signer={signer}/>}
           />
           <Route path="/broker-login" element={<BrokerLogin />} />
           <Route path="/kyc" element={<Kyc />} />
           <Route path="/make-a-listing" element={<MakeAListing />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/metamask-wallet" element={<MetamaskWallet />} />
-          <Route path="/logout" element={<Logout setClient={setClient}/>} />
+          <Route path="/logout" element={<Logout setClient={setClient} />} />
           <Route path="/broker-dashboard" element={<BrokerDashboard />} />
 
           <Route
@@ -100,20 +140,11 @@ function App() {
             path="/view-property-details/:propertyId"
             element={<ViewPropertyDetails />}
           />
-          <Route
-            path="/otp"
-            element={<Otp />}
-          />
-          <Route
-            path="/user-properties"
-            element={<UserProperties />}
-          />
-          <Route
-            path="/user-property/:propertyId"
-            element={<UserProperty />}
-          />
+          <Route path="/otp" element={<Otp />} />
+          <Route path="/user-properties" element={<UserProperties />} />
+          <Route path="/user-property/:propertyId" element={<UserProperty />} />
         </Routes>
-      </Router>
+      </>
     </>
   );
 }

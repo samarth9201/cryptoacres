@@ -13,6 +13,8 @@ import { Link } from "react-router-dom";
 import "../../css/User.css";
 import { addUser } from "../../service/userAPI";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { API } from "../../constants";
 
 function Copyright(props) {
   return (
@@ -36,15 +38,25 @@ function UserSignup(props) {
   async function handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const user = {
-      firstName: data.get("firstName"),
-      lastName: data.get("lastName"),
-      email: data.get("email"),
-      username: data.get("username"),
+    const address = await props.signer.getAddress();
+
+    var user = {
+      FirstName: data.get("firstName"),
+      LastName: data.get("lastName"),
+      Username: data.get("username"),
+      Email: data.get("email"),
+      PublicKey: address,
     };
 
+    console.log(user);
+
+    await axios.post(`${API}/api/users/signup`, user);
+
+    await axios.post(`${API}/api/users/signup/sendotp`, {
+      PublicKey: address,
+    });
+
     navigate("/otp");
-    
 
     // //send this data to backend to signup user
     // //once user is successfully signed up redirect them to home page / marketplace
@@ -124,7 +136,7 @@ function UserSignup(props) {
                   label="Email Address"
                   name="email"
                 />
-              </Grid>   
+              </Grid>
             </Grid>
             <Button
               type="submit"
