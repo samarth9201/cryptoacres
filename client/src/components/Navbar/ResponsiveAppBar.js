@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import NavbarItems from "./NavbarItems";
 import "../../css/Navbar.css";
 import metamaskLogo from "../../images/metamask.png";
+import { Avatar } from "@mui/material";
 
 function ResponsiveAppBar(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -116,16 +117,12 @@ function ResponsiveAppBar(props) {
               onClick={props.connectWallet}
               to="/metamask-wallet"
               className="user-navbar-user-signup-btn"
+              startIcon={<Avatar src={metamaskLogo} sx={{ width: 56, height: 56 }}/>}
+              size="large"
+              sx={{position: "absolute", right: 0}}
+              variant="text"
             >
-              <img
-                src={metamaskLogo}
-                style={{
-                  width: 60,
-                  height: 60,
-                  marginLeft: 295,
-                }}
-                alt="metamask-logo"
-              />
+              {props.user !== null ? props.user.Username : null}
             </Button>
 
             {/* <Link to="/user-signup" className="user-signup-btn">
