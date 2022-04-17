@@ -31,7 +31,7 @@ function UserPropertyDetails(props) {
     React.useEffect(async () =>{
       var user = await axios.post(`${API}/api/users`, {"PublicKey": property.data.owner})
       setUser(user.data.user)
-    })
+    }, [])
 
   return (
     <Paper

@@ -10,7 +10,7 @@ function PropertyCard(props) {
   const navigate = useNavigate();
   const property = props.property;
   const postedBy =
-    "Posted by " + property.owner.firstName + " " + property.owner.lastName;
+    "Posted by " + property.user.Username;
   const address =
     property.locationDetails.society +
     ", " +
@@ -19,7 +19,7 @@ function PropertyCard(props) {
     property.locationDetails.city;
 
   function proceedToVerificationHandle(event) {
-    navigate("/verify-property/" + property.propertyId);
+    navigate(`/verify-property/${property.address}/${property.data.tokenId}`);
   }
 
   return (
@@ -59,7 +59,7 @@ function PropertyCard(props) {
               <div className="property-card-item">
                 <Typography component="h4" variant="h6">
                   Selling Price &#x20b9;{" "}
-                  {numDifferentiation(parseInt(property.price))}
+                  {numDifferentiation(parseInt(property.data.price))}
                 </Typography>
               </div>
             </Grid>
@@ -70,7 +70,7 @@ function PropertyCard(props) {
                 </Typography>
               </div>
             </Grid>
-            <Grid item xs={12} md={6} style={{ display: "flex" }}>
+            {/* <Grid item xs={12} md={6} style={{ display: "flex" }}>
               <div className="property-card-item">
                 <Typography
                   component="h4"
@@ -80,7 +80,7 @@ function PropertyCard(props) {
                   Posted on {property.postedOn}
                 </Typography>
               </div>
-            </Grid>
+            </Grid> */}
             <Grid
               item
               xs={12}

@@ -96,13 +96,13 @@ function App() {
             <UserSignup client={client} setClient={setClient} signer={signer} />
           }
         />
-        <Route path="/broker-login" element={<BrokerLogin />} />
+        <Route path="/broker-login" element={<BrokerLogin/>} />
         <Route path="/kyc" element={<Kyc />} />
         <Route path="/make-a-listing" element={<MakeAListing />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/metamask-wallet" element={<MetamaskWallet />} />
         <Route path="/logout" element={<Logout setClient={setClient} />} />
-        <Route path="/broker-dashboard" element={<BrokerDashboard />} />
+        <Route path="/broker-dashboard" element={<BrokerDashboard signer={signer}/>} />
 
         <Route
           path="/make-a-listing/basic-details"
@@ -139,11 +139,11 @@ function App() {
           element={<PostProperty property={property} signer={signer}/>}
         />
         <Route
-          path="/verify-property/:propertyId"
+          path="/verify-property/:contract/:id"
           element={<VerifyProperty />}
         />
         <Route
-          path="/view-property-details/:propertyId"
+          path="/view-property-details/"
           element={<ViewPropertyDetails />}
         />
         <Route path="/otp" element={<Otp signer={signer}/>} />
