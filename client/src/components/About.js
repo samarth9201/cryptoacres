@@ -1,9 +1,18 @@
-import React from "react";
+import React from 'react'
+import Aboutsection from './Aboutsection'
+import Services from './Sections';
+import { homeObjOne, homeObjThree, homeObjTwo, homeObjFour } from './Aboutsection/Data';
 
-function About() {
-    return <>
-        <h1>This is About page</h1>
-    </>
+const About = () => {
+  return (
+      <>
+        <Aboutsection {...homeObjOne} />
+        <Aboutsection {...homeObjTwo} />
+        <Services />
+        <Aboutsection {...homeObjThree} />
+        <Aboutsection {...homeObjFour} />
+      </>
+  )
 }
 
-export default About;
+export default About
