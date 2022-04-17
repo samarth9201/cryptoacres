@@ -147,7 +147,7 @@ function App() {
           element={<ViewPropertyDetails />}
         />
         <Route path="/otp" element={<Otp signer={signer}/>} />
-        <Route path="/user-properties" element={<UserProperties />} />
+        <Route path="/user-properties" element={<UserProperties signer={signer}/>} />
         <Route path="/user-property/:propertyId" element={<UserProperty />} />
       </Routes>
     </>
