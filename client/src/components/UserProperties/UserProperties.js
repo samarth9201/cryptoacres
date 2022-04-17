@@ -69,10 +69,11 @@ const myProperty = {
 function UserProperties(props) {
 
   const [properties, setProperties] = React.useState([])
+  const [contract, setContract] = React.useState(null)
 
   React.useEffect(async () => {
     if (props.signer === null) {
-      alert("Please Connect to MetaMask");
+      console.log("Please Connect to MetaMask");
     } else {
       var { chainId } = await props.signer.provider.getNetwork();
       var address = NFTMarketplace.networks[chainId].address;
@@ -90,6 +91,7 @@ function UserProperties(props) {
         var d = await axios.get(uri)
         d = {
           ...d.data.attributes,
+          tokenId: myNFT[i].tokenId,
           verificationStatus: myNFT[i].verified === true ? "Verified" : "Unverified"
         }
 
@@ -97,6 +99,7 @@ function UserProperties(props) {
         p.push(d)
       }
       setProperties(p)
+      setContract(address)
     }
   });
   return (
@@ -108,7 +111,7 @@ function UserProperties(props) {
       {properties.map((property, id) => {
         return (
           <Grid key={id} item xs={12} md={3} style={{ padding: 15 }}>
-            <PropertyCard property={property} />
+            <PropertyCard property={property} contract={contract}/>
           </Grid>
         );
       })}
