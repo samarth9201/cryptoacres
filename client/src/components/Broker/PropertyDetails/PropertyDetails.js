@@ -5,8 +5,11 @@ import "./PropertyDetails.css";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
+import { API } from "../../../constants";
+import axios from "axios";
 
 function PropertyDetails(props) {
+  const [user, setUser] = React.useState(null)
   const property = props.property;
   const address =
     property.locationDetails.society +
@@ -16,6 +19,11 @@ function PropertyDetails(props) {
     property.locationDetails.city;
 
     const [issues, setIssues] = useState("");
+
+    React.useEffect(async () =>{
+      var user = await axios.post(`${API}/api/users`, {"PublicKey": property.data.owner})
+      setUser(user.data.user)
+    }, [])
 
     function handleApprove() {
       
@@ -45,7 +53,7 @@ function PropertyDetails(props) {
               style={{ color: "#524C4C", marginBottom: 10 }}
             >
               Posted by{" "}
-              {property.owner.firstName + " " + property.owner.lastName}
+              {(user === null) ? property.data.owner : user.Username}
             </Typography>
             <Typography
               component="h4"
@@ -56,7 +64,7 @@ function PropertyDetails(props) {
             </Typography>
             <Typography component="h4" variant="h4">
               {/* &#x20b9;  */}
-              ETH {" "} {property.price}
+              {property.data.price.toString()}{" "}ETH
             </Typography>
             
             <Grid container spacing={2}>

@@ -87,7 +87,7 @@ function UserProperty() {
     }
 
     setProperty(metadata);
-  });
+  }, []);
   return (
     <Grid container spacing={2} style={{ marginTop: 20 }}>
       {property === null ? (
