@@ -7,7 +7,7 @@ import Paper from "@mui/material/Paper";
 
 function PropertyDescription(props) {
   const property = props.property;
-  const price = "₹ " + numDifferentiation(parseInt(property.price));
+  const price = "₹ " + numDifferentiation(parseInt(property.data.price));
   const pricePerUnitArea = "₹ " + property.pricePerUnitArea;
   const location =
     property.locationDetails.locality + ", " + property.locationDetails.city;

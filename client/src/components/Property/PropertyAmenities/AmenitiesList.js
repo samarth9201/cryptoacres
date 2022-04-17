@@ -6,8 +6,8 @@ function AmenitiesList(props) {
   return (
     <Grid item xs={12} md={4}>
       <ul>
-        {props.list.map((item) => (
-          <li>
+        {props.list.map((item, id) => (
+          <li key={id}>
             <Typography
               component="h4"
               variant="h6"

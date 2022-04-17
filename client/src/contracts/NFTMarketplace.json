@@ -44368,8 +44368,8 @@
     "1337": {
       "events": {},
       "links": {},
-      "address": "0x0E2AaDb47d0Baa4e0ac6145B0E1c8ff05124a772",
-      "transactionHash": "0x5cc650a3a84f811bf39ef72a0823d4e9f912d8cbff6001d427d7994a6ee8a3cf"
+      "address": "0x2Dc620377dd2cb2F13e93e4cAa08B662d407b413",
+      "transactionHash": "0xd2881aace5e4c64de25b29e6080bb48b6bc02af2db6757c331e60da321be8f5a"
     },
     "5777": {
       "events": {},
@@ -44379,7 +44379,7 @@
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-04-17T09:33:17.899Z",
+  "updatedAt": "2022-04-17T17:06:43.259Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

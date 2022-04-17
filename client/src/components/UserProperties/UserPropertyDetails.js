@@ -9,8 +9,11 @@ import Tooltip from "@mui/material/Tooltip";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import Divider from "@mui/material/Divider";
 import TextField from "@mui/material/TextField";
+import axios from "axios";
+import { API } from "../../constants";
 
 function UserPropertyDetails(props) {
+  const [user, setUser] = React.useState(null)
   const property = props.property;
   const address =
     property.locationDetails.society +
@@ -24,6 +27,11 @@ function UserPropertyDetails(props) {
     function placeForSale() {
         console.log(sellingPrice);
     }
+
+    React.useEffect(async () =>{
+      var user = await axios.post(`${API}/api/users`, {"PublicKey": property.data.owner})
+      setUser(user.data.user)
+    })
 
   return (
     <Paper
@@ -51,7 +59,7 @@ function UserPropertyDetails(props) {
               style={{ color: "#524C4C", marginBottom: 20 }}
             >
               Owned by{" "}
-              {property.owner.firstName + " " + property.owner.lastName}
+              {(user === null) ? property.data.owner : user.Username}
             </Typography>
 
             <TextField
