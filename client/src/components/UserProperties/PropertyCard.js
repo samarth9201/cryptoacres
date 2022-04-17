@@ -21,7 +21,8 @@ function PropertyCard(props) {
   
 
   function viewDetailsHandle() {
-    navigate("/user-property/" + property.propertyId);
+    console.log(property)
+    navigate(`/user-property/${props.contract}/${property.tokenId}`);
   }
 
   return (

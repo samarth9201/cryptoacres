@@ -136,7 +136,7 @@ function App() {
         />
         <Route
           path="/make-a-listing/post-property"
-          element={<PostProperty property={property} />}
+          element={<PostProperty property={property} signer={signer}/>}
         />
         <Route
           path="/verify-property/:propertyId"
@@ -147,8 +147,8 @@ function App() {
           element={<ViewPropertyDetails />}
         />
         <Route path="/otp" element={<Otp signer={signer}/>} />
-        <Route path="/user-properties" element={<UserProperties />} />
-        <Route path="/user-property/:propertyId" element={<UserProperty />} />
+        <Route path="/user-properties" element={<UserProperties signer={signer}/>} />
+        <Route path="/user-property/:contract/:id" element={<UserProperty />} />
       </Routes>
     </>
   );
