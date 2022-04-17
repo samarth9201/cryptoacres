@@ -136,7 +136,7 @@ function App() {
         />
         <Route
           path="/make-a-listing/post-property"
-          element={<PostProperty property={property} />}
+          element={<PostProperty property={property} signer={signer}/>}
         />
         <Route
           path="/verify-property/:propertyId"

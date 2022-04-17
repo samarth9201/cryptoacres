@@ -1,15 +1,25 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { makeAListing } from "../../../service/propertyAPI";
+import Button from "@mui/material/Button";
 
 function PostProperty(props) {
-  useEffect(() => {
-    console.log(props.property);
-    makeAListing(props.property);
-    console.log("property posted successfully");
-  }, []);
+  const PostProperty = async () => {
+    try {
+      if (props.signer === null) {
+        alert("Please Connect to MetaMask");
+      } else {
+        var price = props.property.price;
+        var prop = props.property;
+        delete prop.price;
+        makeAListing(prop, price, props.signer);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
-      <h1>This is post property</h1>
+      <Button onClick={PostProperty}>Confirm and Post</Button>
     </>
   );
 }
