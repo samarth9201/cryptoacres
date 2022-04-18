@@ -1,6 +1,10 @@
 import React from "react";
 import PropertyCard from "./PropertyCard";
 import Grid from "@mui/material/Grid";
+import { ethers } from "ethers";
+import { RPC } from "../../../constants";
+import NFTMarketplace from "../../../contracts/NFTMarketplace.json"
+import axios from "axios";
 
 const myProperty = {
   propertyId: "1234",
@@ -63,8 +67,38 @@ const myProperty = {
 const properties = [myProperty, myProperty, myProperty, myProperty, myProperty];
 
 function PropertiesForSale() {
+  const [properties, setProperties] = React.useState([]);
+  const [contract, setContract] = React.useState(null);
+
+  React.useEffect(async () => {
+    const web3 = new ethers.providers.JsonRpcProvider(RPC);
+    var {chainId} = await web3.getNetwork()
+    var address = NFTMarketplace.networks[chainId].address
+
+    var nftContract = new ethers.Contract(address, NFTMarketplace.abi, web3);
+
+    var myNFT = await nftContract.fetchMarketItems();
+    var p = [];
+
+    for (var i = 0; i < myNFT.length; i++) {
+      var uri = await nftContract.tokenURI(myNFT[i].tokenId);
+      var d = await axios.get(uri);
+      console.log(d.data.attributes)
+      d = {
+        ...d.data.attributes,
+        tokenId: myNFT[i].tokenId,
+        verificationStatus:
+          myNFT[i].verified === true ? "Verified" : "Unverified",
+      };
+
+      console.log(d)
+      p.push(d);
+    }
+    setProperties(p);
+    setContract(address);
+  }, []);
   return (
-    <Grid container spacing={2} style={{paddingLeft: 50, paddingRight: 20}}>
+    <Grid container spacing={2} style={{ paddingLeft: 50, paddingRight: 20 }}>
       {properties.map((property, id) => {
         return (
           <Grid key={id} item xs={12} md={3} style={{ padding: 15 }}>

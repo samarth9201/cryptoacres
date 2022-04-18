@@ -69,7 +69,7 @@ import axios from "axios";
 //   propertyTypeTwo: "Apartment",
 // };
 
-function UserProperty() {
+function UserProperty(props) {
   const { contract, id } = useParams();
   const [property, setProperty] = React.useState(null);
 
@@ -85,7 +85,7 @@ function UserProperty() {
       ...metadata,
       data
     }
-
+    console.log(metadata)
     setProperty(metadata);
   }, []);
   return (
@@ -99,7 +99,7 @@ function UserProperty() {
             <ImageCarousel imageUrlList={property.imageUrlList} />
           </Grid>
           <Grid item xs={12} md={6}>
-            <UserPropertyDetails property={property} />
+            <UserPropertyDetails property={property} signer={props.signer}/>
           </Grid>
           <Grid item xs={12} md={12}>
             <PropertyDescription property={property} />

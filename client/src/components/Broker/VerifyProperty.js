@@ -10,7 +10,7 @@ import NFTMarketplace from "../../contracts/NFTMarketplace.json";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-function VerifyProperty() {
+function VerifyProperty(props) {
   const { contract, id } = useParams();
   const [property, setProperty] = React.useState(null);
 
@@ -40,7 +40,7 @@ function VerifyProperty() {
             <ImageCarousel imageUrlList={property.imageUrlList} />
           </Grid>
           <Grid item xs={12} md={6}>
-            <PropertyDetails property={property} />
+            <PropertyDetails property={property} signer={props.signer}/>
           </Grid>
           <Grid item xs={12} md={12}>
             <PropertyDescription property={property} />
