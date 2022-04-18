@@ -97,7 +97,7 @@ function ResponsiveAppBar(props) {
             className="navbar-box"
             sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
           >
-            {NavbarItems.slice(0, 3).map((item, id) => (
+            {NavbarItems.slice(0, 5).map((item, id) => (
               <Link
                 key={id}
                 to={item.link}
@@ -124,26 +124,6 @@ function ResponsiveAppBar(props) {
             >
               {props.user !== null ? props.user.Username : null}
             </Button>
-
-            {/* <Link to="/user-signup" className="user-signup-btn">
-              <Button sx={{ my: 2, color: "black", display: "block" }}>
-                Signup
-              </Button>
-            </Link>
-
-            <Link to="/user-login" className="user-login-btn">
-              <Button
-                variant="contained"
-                sx={{
-                  my: 2,
-                  color: "white",
-                  display: "block",
-                  backgroundColor: "#014DFF",
-                }}
-              >
-                Login
-              </Button>
-            </Link> */}
           </Box>
         </Toolbar>
       </Container>

@@ -19,6 +19,8 @@ function PropertyDetails(props) {
     property.locationDetails.city;
 
     const [issues, setIssues] = useState("");
+    const [price, setPrice] = useState("");
+    const [pricePSF, setPricePSF] = useState("");
 
     React.useEffect(async () =>{
       var user = await axios.post(`${API}/api/users`, {"PublicKey": property.data.owner})
@@ -26,7 +28,7 @@ function PropertyDetails(props) {
     }, [])
 
     function handleApprove() {
-      
+      console.log(issues, price, pricePSF);
     }
     
     function handleReject() {
@@ -60,12 +62,25 @@ function PropertyDetails(props) {
               variant="h6"
               style={{ marginBottom: 10 }}
             >
-              Selling price
+              Property Valuation
             </Typography>
-            <Typography component="h4" variant="h4">
-              {/* &#x20b9;  */}
-              {property.data.price.toString()}{" "}ETH
-            </Typography>
+            
+            <TextField
+            fullWidth
+            id="price"
+            label="Price"
+            name="price"
+            style={{marginTop: 10}}
+            onChange={(event) => {setPrice(event.target.value)}}
+            />
+            <TextField
+            fullWidth
+            id="pricePSF"
+            label="Price / sq. ft."
+            name="pricePSF"
+            style={{marginTop: 20}}
+            onChange={(event) => {setPricePSF(event.target.value)}}
+            />
             
             <Grid container spacing={2}>
 

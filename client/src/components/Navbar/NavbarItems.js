@@ -15,6 +15,16 @@ const NavbarItems = [
     link: "/contact-us",
   },
   {
+    id: 3,
+    title: "Markertplace",
+    link: "/marketplace",
+  },
+  {
+    id: 4,
+    title: "Add Property",
+    link: "/make-a-listing",
+  },
+  {
     id: 5,
     title: "Metamask",
     link: "/metamask-wallet",

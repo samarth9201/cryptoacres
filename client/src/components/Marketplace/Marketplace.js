@@ -9,7 +9,7 @@ import ActivityLog from "./ActivityLog";
 function Marketplace() {
   return (
     <>
-      <div className="search-bar-div">
+      {/* <div className="search-bar-div">
         <TextField
           id="outlined-search"
           label="Search"
@@ -17,7 +17,7 @@ function Marketplace() {
           fullWidth
           style={{ maxWidth: "65%" }}
         />
-      </div>
+      </div> */}
 
       <Grid container spacing={2} style={{ marginTop: 40 }}>
         {/* <Grid item xs={12} md={2} style={{ backgroundColor: "yellow" }}>
