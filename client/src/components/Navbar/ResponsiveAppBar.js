@@ -48,7 +48,7 @@ function ResponsiveAppBar(props) {
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
-              onClick={handleOpenNavMenu}
+              onClick={handleOpenNavMenu} 
               color="inherit"
             >
               <MenuIcon className="menu-icon" />
