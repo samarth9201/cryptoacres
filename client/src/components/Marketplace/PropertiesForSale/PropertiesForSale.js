@@ -71,6 +71,7 @@ function PropertiesForSale() {
   const [contract, setContract] = React.useState(null);
 
   React.useEffect(async () => {
+    console.log("Here")
     const web3 = new ethers.providers.JsonRpcProvider(RPC);
     var {chainId} = await web3.getNetwork()
     var address = NFTMarketplace.networks[chainId].address
@@ -82,10 +83,12 @@ function PropertiesForSale() {
 
     for (var i = 0; i < myNFT.length; i++) {
       var uri = await nftContract.tokenURI(myNFT[i].tokenId);
+      var data = await nftContract.idToMarketItem(myNFT[i].tokenId)
       var d = await axios.get(uri);
-      console.log(d.data.attributes)
       d = {
         ...d.data.attributes,
+        address,
+        data,
         tokenId: myNFT[i].tokenId,
         verificationStatus:
           myNFT[i].verified === true ? "Verified" : "Unverified",

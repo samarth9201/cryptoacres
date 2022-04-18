@@ -14,6 +14,7 @@ import { API } from "../../constants";
 import { useParams } from "react-router-dom";
 import { ethers } from "ethers";
 import NFTMarketplace from "../../contracts/NFTMarketplace.json";
+import web3 from "web3"
 
 function UserPropertyDetails(props) {
   const { contract, id } = useParams();
@@ -32,6 +33,7 @@ function UserPropertyDetails(props) {
     console.log(sellingPrice);
     console.log(props.signer);
 
+    var ethPrice = await web3.utils.toWei(sellingPrice, "ether")
     var nftContract = new ethers.Contract(
       contract,
       NFTMarketplace.abi,
@@ -39,7 +41,7 @@ function UserPropertyDetails(props) {
     );
     const listingPrice = await nftContract.getListingPrice();
     console.log(listingPrice);
-    const tx = await nftContract.resellToken(id, sellingPrice, {value: listingPrice})
+    const tx = await nftContract.resellToken(id, ethPrice, {value: listingPrice})
     const receipt = await tx.wait();
 
     alert("Transaction Successful: " + receipt.transactionHash);

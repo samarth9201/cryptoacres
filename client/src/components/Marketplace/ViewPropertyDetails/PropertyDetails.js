@@ -10,8 +10,17 @@ import Tooltip from "@mui/material/Tooltip";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import Divider from "@mui/material/Divider";
 import RemainingTime from "./RemainingTime";
+import axios from "axios";
+import { API } from "../../../constants";
+import web3 from "web3";
+import { useParams } from "react-router-dom";
+import { ethers } from "ethers";
+import NFTMarketplace from "../../../contracts/NFTMarketplace.json";
 
 function PropertyDetails(props) {
+  const { contract, id } = useParams();
+  const [user, setUser] = React.useState(null);
+  const [price, setPrice] = React.useState("NA");
   const property = props.property;
   const address =
     property.locationDetails.society +
@@ -20,9 +29,33 @@ function PropertyDetails(props) {
     ", " +
     property.locationDetails.city;
 
-  function handleBuyNow() {
-    console.log("clicked on buy now!");
+  async function handleBuyNow() {
+    var nftContract = new ethers.Contract(
+      contract,
+      NFTMarketplace.abi,
+      props.signer
+    );
+    var a;
+    if(price !== "NA"){
+      a = await web3.utils.toWei(price, "ether")
+    }
+    const tx = await nftContract.createMarketSale(id, {value: a});
+    const receipt = await tx.wait();
+
+    alert("Transaction Successful: " + receipt.transactionHash);
+    console.log(props.signer);
   }
+
+  React.useEffect(async () => {
+    var user = await axios.post(`${API}/api/users`, {
+      PublicKey: property.data.seller,
+    });
+    console.log("Prop");
+    console.log(property);
+    var p = await web3.utils.fromWei(property.data.price.toString());
+    setUser(user.data.user);
+    setPrice(p);
+  }, []);
 
   return (
     <Paper
@@ -49,8 +82,7 @@ function PropertyDetails(props) {
               variant="body1"
               style={{ color: "#524C4C", marginBottom: 20 }}
             >
-              Owned by{" "}
-              {property.owner.firstName + " " + property.owner.lastName}
+              Sold by {user === null ? property.data.owner : user.Username}
             </Typography>
 
             <Divider />
@@ -64,8 +96,7 @@ function PropertyDetails(props) {
             </Typography>
             <Typography component="h4" variant="h4">
               {/* &#x20b9;  */}
-              ETH {" "}
-              {property.price}
+              {price} ETH
             </Typography>
 
             <Button

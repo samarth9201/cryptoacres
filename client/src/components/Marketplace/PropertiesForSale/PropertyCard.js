@@ -9,9 +9,11 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import TimelapseIcon from "@mui/icons-material/Timelapse";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
+import web3 from "web3"
 
 function PropertyCard(props) {
   const navigate = useNavigate();
+  const [price, setPrice] = React.useState(0)
   const property = props.property;
   const title =
     property.locationDetails.society.toUpperCase() +
@@ -19,11 +21,16 @@ function PropertyCard(props) {
     property.locationDetails.locality.toUpperCase() +
     ", " +
     property.locationDetails.city.toUpperCase();
-  const price = "₹ " + numDifferentiation(parseInt(property.price));
 
   function viewDetailsHandle() {
-    navigate("/view-property-details/" + property.propertyId);
+    navigate(`/view-property-details/${property.address}/${property.data.tokenId}`);
   }
+
+  React.useEffect(async () =>{
+
+    var a = await  web3.utils.fromWei(property.data.price.toString(), "ether")
+    setPrice(a)
+  }, [])
 
   return (
     <>
@@ -53,7 +60,7 @@ function PropertyCard(props) {
               variant="body1"
               style={{ marginLeft: 30 }}
             >
-              {price}
+              {price + " "} ETH
             </Typography>
           </Grid>
           <Grid item xs={6} style={{ paddingLeft: 50 }}>
@@ -64,8 +71,6 @@ function PropertyCard(props) {
                 flexWrap: "wrap",
               }}
             >
-              <TimelapseIcon style={{ color: "rgb(112, 122, 131)" }} />
-              <span>6 days left</span>
             </div>
           </Grid>
           <Grid item xs={6}>
