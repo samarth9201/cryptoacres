@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email</title>
+    <link rel="stylesheet" href="./stylesheets/mail.css">
+    <style>
+        h1 {
+            font-size: 6vh;
+        }
+
+        h3 {
+            font-size: 3vh;
+        }
+
+        .contents {
+            justify-content: center;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>CryptoAcres</h1>
+    </div>
+    <div class="contents">
+        <h1>Hello, {{firstname}}</h1>
+        <h3>
+            Your OTP for verification is: {{otp}}<br>
+        </h3>
+        <h4>It is valid for 15 minutes only.</h4>
+    </div>
+</body>
+
+</html>
