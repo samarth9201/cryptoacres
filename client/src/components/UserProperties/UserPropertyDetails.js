@@ -11,9 +11,13 @@ import Divider from "@mui/material/Divider";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 import { API } from "../../constants";
+import { useParams } from "react-router-dom";
+import { ethers } from "ethers";
+import NFTMarketplace from "../../contracts/NFTMarketplace.json";
 
 function UserPropertyDetails(props) {
-  const [user, setUser] = React.useState(null)
+  const { contract, id } = useParams();
+  const [user, setUser] = React.useState(null);
   const property = props.property;
   const address =
     property.locationDetails.society +
@@ -22,16 +26,31 @@ function UserPropertyDetails(props) {
     ", " +
     property.locationDetails.city;
 
-    const [sellingPrice, setSellingPrice] = useState(0);
+  const [sellingPrice, setSellingPrice] = useState(0);
 
-    function placeForSale() {
-        console.log(sellingPrice);
-    }
+  async function placeForSale() {
+    console.log(sellingPrice);
+    console.log(props.signer);
 
-    React.useEffect(async () =>{
-      var user = await axios.post(`${API}/api/users`, {"PublicKey": property.data.owner})
-      setUser(user.data.user)
-    }, [])
+    var nftContract = new ethers.Contract(
+      contract,
+      NFTMarketplace.abi,
+      props.signer
+    );
+    const listingPrice = await nftContract.getListingPrice();
+    console.log(listingPrice);
+    const tx = await nftContract.resellToken(id, sellingPrice, {value: listingPrice})
+    const receipt = await tx.wait();
+
+    alert("Transaction Successful: " + receipt.transactionHash);
+  }
+
+  React.useEffect(async () => {
+    var user = await axios.post(`${API}/api/users`, {
+      PublicKey: property.data.owner,
+    });
+    setUser(user.data.user);
+  }, []);
 
   return (
     <Paper
@@ -58,21 +77,20 @@ function UserPropertyDetails(props) {
               variant="body1"
               style={{ color: "#524C4C", marginBottom: 20 }}
             >
-              Owned by{" "}
-              {(user === null) ? property.data.owner : user.Username}
+              Owned by {user === null ? property.data.owner : user.Username}
             </Typography>
 
             <TextField
-                  required
-                  fullWidth
-                  id="sellingPrice"
-                  label="Selling Price (ETH)"
-                  name="sellingPrice"
-                  onChange={(event) => {
-                      setSellingPrice(event.target.value);
-                  }}
+              required
+              fullWidth
+              id="sellingPrice"
+              label="Selling Price (ETH)"
+              name="sellingPrice"
+              onChange={(event) => {
+                setSellingPrice(event.target.value);
+              }}
             />
-            
+
             <Button
               variant="contained"
               style={{ marginTop: 20, paddingTop: 10, paddingBottom: 10 }}

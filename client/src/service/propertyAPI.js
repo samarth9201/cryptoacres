@@ -36,7 +36,8 @@ export async function makeAListing(property, price, signer) {
 
   var nftContract = new ethers.Contract(address, NFTMarketplace.abi, signer)
   const listingPrice = await nftContract.getListingPrice()
-  const tx = await nftContract.createToken(data, price, {value: listingPrice})
+  console.log(listingPrice)
+  const tx = await nftContract.createToken(data, "0", {value: listingPrice})
   const receipt = await tx.wait()
 
   alert("Transaction Successful: " + receipt.transactionHash)

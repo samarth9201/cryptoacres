@@ -11,7 +11,7 @@ contract NFTMarketplace is ERC721URIStorage {
     Counters.Counter private _itemsSold;
     Counters.Counter private _verified;
 
-    uint256 listingPrice = 1 ether;
+    uint256 listingPrice = 0.025 ether;
     address payable public owner;
 
     mapping(uint256 => MarketItem) public idToMarketItem;
@@ -24,6 +24,7 @@ contract NFTMarketplace is ERC721URIStorage {
         address verifier;
         uint256 price;
         uint256 valuation;
+        uint256 pricePSF;
         uint256 valuationDate;
         bool sold;
         bool verified;
@@ -73,7 +74,7 @@ contract NFTMarketplace is ERC721URIStorage {
         return newTokenId;
     }
 
-    function verifyToken(uint256 _tokenId, uint256 _valuation) public {
+    function verifyToken(uint256 _tokenId, uint256 _valuation, uint256 _pricePSF) public {
         require(
             isVerifier[msg.sender] == true,
             "Only Verified Accounts can be used to Verify Asset"
@@ -84,13 +85,14 @@ contract NFTMarketplace is ERC721URIStorage {
         idToMarketItem[_tokenId].valuation = _valuation;
         idToMarketItem[_tokenId].valuationDate = block.timestamp;
         idToMarketItem[_tokenId].verified = true;
+        idToMarketItem[_tokenId].pricePSF = _pricePSF;
         idToMarketItem[_tokenId].verifier = msg.sender;
 
         emit TokenVerified(_tokenId, msg.sender);
     }
 
     function createMarketItem(uint256 tokenId, uint256 price) private {
-        require(price > 0, "Price must be at least 1 wei");
+        require(price == 0, "Price must be set after verifying the property");
         require(
             msg.value == listingPrice,
             "Price must be equal to listing price"
@@ -102,6 +104,7 @@ contract NFTMarketplace is ERC721URIStorage {
             payable(msg.sender),
             address(0),
             price,
+            0,
             0,
             0,
             false,
