@@ -87,7 +87,7 @@ function PricingForm(props) {
                 ))}
               </ul>
 
-              <Typography component="h2" variant="h6" style={{ marginTop: 25 }}>
+              {/* <Typography component="h2" variant="h6" style={{ marginTop: 25 }}>
                 Pricing
               </Typography>
 
@@ -112,7 +112,7 @@ function PricingForm(props) {
                     style={{ marginTop: 20, marginBottom: 5 }}
                   />
                 </Grid>
-              </Grid>
+              </Grid> */}
 
               <Button
                 type="submit"
