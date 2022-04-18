@@ -7,7 +7,7 @@ import Paper from "@mui/material/Paper";
 
 function PropertyDescription(props) {
   const property = props.property;
-  const price = "₹ " + numDifferentiation(parseInt(property.data.price));
+  // const price = "₹ " + numDifferentiation(parseInt(property.data.price));
   const pricePerUnitArea = "₹ " + property.pricePerUnitArea;
   const location =
     property.locationDetails.locality + ", " + property.locationDetails.city;
@@ -35,7 +35,7 @@ function PropertyDescription(props) {
         </Typography>
 
         <Grid container spacing={2}>
-          <PropertyDescriptionItem itemLabel="Price" itemValue={price} />
+          {/* <PropertyDescriptionItem itemLabel="Price" itemValue={price} /> */}
           <PropertyDescriptionItem
             itemLabel={`Price per ${property.propertyProfile.areaUnit}`}
             itemValue={pricePerUnitArea}
