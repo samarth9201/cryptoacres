@@ -10,12 +10,13 @@ function PropertyCardTitle(props) {
       <span className="property-card-title-span" style={props.style}>
         <Typography component="h4" variant="h6">
           {props.title}{" "}
-          <Tooltip title="Verified Property">
+          {props.verificationStatus === "Verified" && <Tooltip title="Verified Property">
             <VerifiedIcon
               fontSize="small"
               style={{ color: "rgb(32, 129, 226)" }}
             />
-          </Tooltip>
+          </Tooltip>}
+          
         </Typography>
       </span>
     </div>

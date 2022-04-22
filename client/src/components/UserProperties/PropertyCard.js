@@ -29,31 +29,32 @@ function PropertyCard(props) {
     <>
       <Paper
         elevation={3}
-        style={{ paddingBottom: 20 }}
+        
         onClick={viewDetailsHandle}
         className="property-card-paper"
       >
+        <center>
         <img
           src={property.imageUrlList[0]}
           className="property-card-property-img"
           alt="property"
         />
-        <PropertyCardTitle title={title} />
+        </center>
+        <PropertyCardTitle title={title} verificationStatus={property.verificationStatus}/>
         <Grid container spacing={2}>
 
-          <Grid item xs={12}>
-          <Typography
+          <Grid item xs={12} style={{marginTop: 10}}>
+          {/* <Typography
               component="h4"
               variant="h6"
               style={{ marginLeft: 30, marginTop: 10, marginBottom: 10 }}
             >
               Status: {property.verificationStatus}
-            </Typography>
+            </Typography> */}
             <Button
-              size="small"
+              fullWidth
               variant="contained"
-              fullwidth
-              style={{ display: "flex", marginLeft: "auto", marginRight: "auto", alignContent: "center", backgroundColor: "#013A63" }}
+              style={{ backgroundColor: "#013A63", paddingRight: 10, borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
               onClick={viewDetailsHandle}
             >
               View Details

@@ -36,15 +36,16 @@ function PropertyCard(props) {
     <>
       <Paper
         elevation={3}
-        style={{ paddingBottom: 20 }}
         onClick={viewDetailsHandle}
         className="property-card-paper"
       >
+        <center>
         <img
           src={property.imageUrlList[0]}
           className="property-card-property-img"
           alt="property"
         />
+        </center>
         <PropertyCardTitle title={title} />
         <Grid container spacing={2}>
           <Grid item xs={6}>
@@ -73,27 +74,15 @@ function PropertyCard(props) {
             >
             </div>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12}>
             <Button
-              size="small"
+              fullWidth
               variant="contained"
-              style={{ marginLeft: 30, backgroundColor: "#013A63" }}
+              style={{ backgroundColor: "#013A63", paddingRight: 10, borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
               onClick={viewDetailsHandle}
             >
               View Details
             </Button>
-          </Grid>
-          <Grid item xs={6} style={{ paddingLeft: 50 }}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                flexWrap: "wrap",
-              }}
-            >
-              <FavoriteBorderIcon style={{ color: "rgb(235, 87, 87)" }} />
-              <span>10</span>
-            </div>
           </Grid>
         </Grid>
       </Paper>

@@ -9,27 +9,7 @@ import ActivityLog from "./ActivityLog";
 function Marketplace() {
   return (
     <>
-      {/* <div className="search-bar-div">
-        <TextField
-          id="outlined-search"
-          label="Search"
-          type="search"
-          fullWidth
-          style={{ maxWidth: "65%" }}
-        />
-      </div> */}
-
-      <Grid container spacing={2} style={{ marginTop: 40 }}>
-        {/* <Grid item xs={12} md={2} style={{ backgroundColor: "yellow" }}>
-          <PropertyFilter />
-        </Grid> */}
-        <Grid>
-          <PropertiesForSale />
-        </Grid>
-        {/* <Grid item xs={12} md={2} style={{ backgroundColor: "blue" }}>
-          <ActivityLog />
-        </Grid> */}
-      </Grid>
+      <PropertiesForSale />
     </>
   );
 }
