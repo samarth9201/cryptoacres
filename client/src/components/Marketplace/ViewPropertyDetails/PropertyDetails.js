@@ -30,20 +30,29 @@ function PropertyDetails(props) {
     property.locationDetails.city;
 
   async function handleBuyNow() {
-    var nftContract = new ethers.Contract(
-      contract,
-      NFTMarketplace.abi,
-      props.signer
-    );
-    var a;
-    if (price !== "NA") {
-      a = await web3.utils.toWei(price, "ether");
-    }
-    const tx = await nftContract.createMarketSale(id, { value: a });
-    const receipt = await tx.wait();
+    try {
 
-    alert("Transaction Successful: " + receipt.transactionHash);
-    console.log(props.signer);
+      if(props.signer === null){
+        alert("Please Connect to Metamask")
+        throw new Error("No Signer")
+      }
+      var nftContract = new ethers.Contract(
+        contract,
+        NFTMarketplace.abi,
+        props.signer
+      );
+      var a;
+      if (price !== "NA") {
+        a = await web3.utils.toWei(price, "ether");
+      }
+      const tx = await nftContract.createMarketSale(id, { value: a });
+      const receipt = await tx.wait();
+
+      alert("Transaction Successful: " + receipt.transactionHash);
+      console.log(props.signer);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   React.useEffect(async () => {

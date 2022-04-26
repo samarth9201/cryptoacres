@@ -30,23 +30,28 @@ function UserPropertyDetails(props) {
   const [sellingPrice, setSellingPrice] = useState(0);
 
   async function placeForSale() {
-    console.log(sellingPrice);
-    console.log(props.signer);
+    try {
+      if(props.signer === null){
+        alert("Please Connect To Mask")
+        throw new Error("No Signer")
+      }
+      var ethPrice = await web3.utils.toWei(sellingPrice, "ether");
+      var nftContract = new ethers.Contract(
+        contract,
+        NFTMarketplace.abi,
+        props.signer
+      );
+      const listingPrice = await nftContract.getListingPrice();
+      console.log(listingPrice);
+      const tx = await nftContract.resellToken(id, ethPrice, {
+        value: listingPrice,
+      });
+      const receipt = await tx.wait();
 
-    var ethPrice = await web3.utils.toWei(sellingPrice, "ether");
-    var nftContract = new ethers.Contract(
-      contract,
-      NFTMarketplace.abi,
-      props.signer
-    );
-    const listingPrice = await nftContract.getListingPrice();
-    console.log(listingPrice);
-    const tx = await nftContract.resellToken(id, ethPrice, {
-      value: listingPrice,
-    });
-    const receipt = await tx.wait();
-
-    alert("Transaction Successful: " + receipt.transactionHash);
+      alert("Transaction Successful: " + receipt.transactionHash);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   React.useEffect(async () => {

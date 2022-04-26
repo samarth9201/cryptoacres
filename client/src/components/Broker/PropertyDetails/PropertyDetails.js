@@ -34,20 +34,24 @@ function PropertyDetails(props) {
   }, []);
 
   async function handleApprove() {
-    console.log(issues, price, pricePSF);
-    console.log(contract);
-    console.log(id);
-    console.log(props.signer);
+    try {
+      console.log(issues, price, pricePSF);
+      console.log(contract);
+      console.log(id);
+      console.log(props.signer);
 
-    var nftContract = new ethers.Contract(
-      contract,
-      NFTMarketplace.abi,
-      props.signer
-    );
-    const tx = await nftContract.verifyToken(id, price, pricePSF);
-    const receipt = await tx.wait();
+      var nftContract = new ethers.Contract(
+        contract,
+        NFTMarketplace.abi,
+        props.signer
+      );
+      const tx = await nftContract.verifyToken(id, price, pricePSF);
+      const receipt = await tx.wait();
 
-    alert("Transaction Successful: " + receipt.transactionHash);
+      alert("Transaction Successful: " + receipt.transactionHash);
+    } catch (error) {
+      alert("Not Authorised");
+    }
   }
 
   return (

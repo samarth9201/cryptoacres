@@ -8,12 +8,11 @@ import Paper from "@mui/material/Paper";
 function PropertyDescription(props) {
   const property = props.property;
   const price =
-    "₹ " +
     numDifferentiation(
       property.data !== null && property.data !== undefined
         ? parseInt(property.data.valuation)
         : "NA"
-    );
+    ) + " ETH";
   const pricePerUnitArea =
     "₹ " +
     numDifferentiation(

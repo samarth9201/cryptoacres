@@ -16,6 +16,7 @@ function UserProperties(props) {
     if (props.signer === null) {
       console.log("Please Connect to MetaMask");
     } else {
+      console.log("Retriveing");
       var { chainId } = await props.signer.provider.getNetwork();
       var address = NFTMarketplace.networks[chainId].address;
 
@@ -37,13 +38,12 @@ function UserProperties(props) {
             myNFT[i].verified === true ? "Verified" : "Unverified",
         };
 
-        // console.log(d)
         p.push(d);
       }
       setProperties(p);
       setContract(address);
     }
-  });
+  }, [props.signer]);
 
   return (
     <Grid
@@ -51,13 +51,19 @@ function UserProperties(props) {
       spacing={2}
       style={{ paddingLeft: 50, paddingRight: 20, marginTop: 40 }}
     >
-      {properties.map((property, id) => {
-        return (
-          <Grid key={id} item xs={12} md={3} style={{ padding: 15 }}>
-            <PropertyCard property={property} contract={contract} />
-          </Grid>
-        );
-      })}
+      {properties.length === 0 ? (
+        <>{(props.signer === null)? "Connect To Metamask" : "Loading"}</>
+      ) : (
+        <>
+          {properties.map((property, id) => {
+            return (
+              <Grid key={id} item xs={12} md={3} style={{ padding: 15 }}>
+                <PropertyCard property={property} contract={contract} />
+              </Grid>
+            );
+          })}
+        </>
+      )}
     </Grid>
   );
 }

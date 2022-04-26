@@ -3,6 +3,7 @@ import "./PropertyCardTitle.css";
 import Typography from "@mui/material/Typography";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import Tooltip from "@mui/material/Tooltip";
+import CancelIcon from '@mui/icons-material/Cancel';
 
 function PropertyCardTitle(props) {
   return (
@@ -20,6 +21,14 @@ function PropertyCardTitle(props) {
                 <VerifiedIcon
                   fontSize="small"
                   style={{ color: "rgb(32, 129, 226)" }}
+                />
+              </Tooltip>
+            )}
+            {props.verificationStatus === "Unverified" && (
+              <Tooltip title="Unverified Property">
+                <CancelIcon
+                  fontSize="small"
+                  style={{ color: "red" }}
                 />
               </Tooltip>
             )}
