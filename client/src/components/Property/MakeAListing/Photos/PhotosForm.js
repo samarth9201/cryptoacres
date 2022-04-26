@@ -74,14 +74,22 @@ function PhotosForm(props) {
               sx={{ mt: 1 }}
               encType="multipart/form-data"
             >
-              <Typography component="h2" variant="h5">
+              <Typography
+                component="h2"
+                variant="h5"
+                style={{ fontFamily: "Montserrat" }}
+              >
                 Photos
               </Typography>
 
               <Button
                 variant="contained"
                 className="select-images-btn"
-                style={{ margin: 20, display: "block" }}
+                style={{
+                  margin: 20,
+                  display: "block",
+                  fontFamily: "Montserrat",
+                }}
               >
                 <input
                   type="file"
@@ -94,7 +102,12 @@ function PhotosForm(props) {
               </Button>
 
               {imageList.map((item, id) => (
-                <img key={id} src={item} alt="chosen" className="uploaded-image" />
+                <img
+                  key={id}
+                  src={item}
+                  alt="chosen"
+                  className="uploaded-image"
+                />
               ))}
 
               <Button
@@ -102,6 +115,7 @@ function PhotosForm(props) {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                style={{ fontFamily: "Montserrat" }}
               >
                 Continue
               </Button>

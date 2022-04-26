@@ -50,7 +50,11 @@ function BasicDetailsForm(props) {
               noValidate
               sx={{ mt: 1 }}
             >
-              <Typography component="h2" variant="h5">
+              <Typography
+                component="h2"
+                variant="h5"
+                style={{ fontFamily: "Montserrat" }}
+              >
                 What kind of property do you have?
               </Typography>
 
@@ -63,6 +67,8 @@ function BasicDetailsForm(props) {
                     id="radio1"
                     onChange={handleChangePropertyTypeOne}
                     className="radio-input"
+                    inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                    InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
                   />
                   <label className="radio-label" htmlFor="radio1">
                     Residential
@@ -76,6 +82,8 @@ function BasicDetailsForm(props) {
                     id="radio2"
                     onChange={handleChangePropertyTypeOne}
                     className="radio-input"
+                    inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                    InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
                   />
                   <label className="radio-label" htmlFor="radio2">
                     Commercial
@@ -95,6 +103,7 @@ function BasicDetailsForm(props) {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                style={{ fontFamily: "Montserrat" }}
               >
                 Continue
               </Button>

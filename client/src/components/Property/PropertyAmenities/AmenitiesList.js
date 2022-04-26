@@ -11,7 +11,10 @@ function AmenitiesList(props) {
             <Typography
               component="h4"
               variant="h6"
-              style={{ marginBottom: 10 }}
+              style={{
+                marginBottom: 10,
+                fontFamily: "Montserrat",
+              }}
             >
               {item}
             </Typography>

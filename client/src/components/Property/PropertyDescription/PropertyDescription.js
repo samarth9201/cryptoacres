@@ -7,16 +7,20 @@ import Paper from "@mui/material/Paper";
 
 function PropertyDescription(props) {
   const property = props.property;
-  const price = "₹ " + numDifferentiation(
-    (property.data !== null && property.data !== undefined)?
-    parseInt(property.data.valuation):
-    "NA"
-  );
-  const pricePerUnitArea = "₹ " + numDifferentiation(
-    (property.data !== null && property.data !== undefined)?
-    parseInt(property.data.pricePSF.toString()):
-    "NA"
-  );;
+  const price =
+    "₹ " +
+    numDifferentiation(
+      property.data !== null && property.data !== undefined
+        ? parseInt(property.data.valuation)
+        : "NA"
+    );
+  const pricePerUnitArea =
+    "₹ " +
+    numDifferentiation(
+      property.data !== null && property.data !== undefined
+        ? parseInt(property.data.pricePSF.toString())
+        : "NA"
+    );
   const location =
     property.locationDetails.locality + ", " + property.locationDetails.city;
   let ageOfProperty = property.propertyProfile.ageOfProperty;
@@ -37,7 +41,12 @@ function PropertyDescription(props) {
         <Typography
           component="h4"
           variant="h5"
-          style={{ color: "#524C4C", marginBottom: 20 }}
+          style={{
+            color: "#524C4C",
+            marginBottom: 20,
+            fontFamily: "Montserrat",
+            fontWeight: 600,
+          }}
         >
           Description
         </Typography>

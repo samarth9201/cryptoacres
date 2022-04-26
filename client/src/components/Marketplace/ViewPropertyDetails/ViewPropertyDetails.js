@@ -43,7 +43,7 @@ function ViewPropertyDetails(props) {
             <ImageCarousel imageUrlList={property.imageUrlList} />
           </Grid>
           <Grid item xs={12} md={6}>
-            <PropertyDetails property={property} signer={props.signer}/>
+            <PropertyDetails property={property} signer={props.signer} />
           </Grid>
           <Grid item xs={12} md={12}>
             <PropertyDescription property={property} />

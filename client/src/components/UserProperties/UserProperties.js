@@ -10,10 +10,8 @@ import axios from "axios";
 // const properties = [myProperty, myProperty, myProperty, myProperty, myProperty];
 
 function UserProperties(props) {
-
-  const [properties, setProperties] = React.useState([])
-  const [contract, setContract] = React.useState(null)
-
+  const [properties, setProperties] = React.useState([]);
+  const [contract, setContract] = React.useState(null);
   React.useEffect(async () => {
     if (props.signer === null) {
       console.log("Please Connect to MetaMask");
@@ -26,25 +24,27 @@ function UserProperties(props) {
         NFTMarketplace.abi,
         props.signer
       );
-      var myNFT = await nftContract.fetchMyNFTs()
-      var p = []
+      var myNFT = await nftContract.fetchMyNFTs();
+      var p = [];
 
-      for(var i = 0; i < myNFT.length; i++){
-        var uri = await nftContract.tokenURI(myNFT[i].tokenId)
-        var d = await axios.get(uri)
+      for (var i = 0; i < myNFT.length; i++) {
+        var uri = await nftContract.tokenURI(myNFT[i].tokenId);
+        var d = await axios.get(uri);
         d = {
           ...d.data.attributes,
           tokenId: myNFT[i].tokenId,
-          verificationStatus: myNFT[i].verified === true ? "Verified" : "Unverified"
-        }
+          verificationStatus:
+            myNFT[i].verified === true ? "Verified" : "Unverified",
+        };
 
         // console.log(d)
-        p.push(d)
+        p.push(d);
       }
-      setProperties(p)
-      setContract(address)
+      setProperties(p);
+      setContract(address);
     }
   });
+
   return (
     <Grid
       container
@@ -54,7 +54,7 @@ function UserProperties(props) {
       {properties.map((property, id) => {
         return (
           <Grid key={id} item xs={12} md={3} style={{ padding: 15 }}>
-            <PropertyCard property={property} contract={contract}/>
+            <PropertyCard property={property} contract={contract} />
           </Grid>
         );
       })}

@@ -9,8 +9,7 @@ import numDifferentiation from "../../../utils/NumDifferentiation";
 function PropertyCard(props) {
   const navigate = useNavigate();
   const property = props.property;
-  const postedBy =
-    "Posted by " + property.user.Username;
+  const postedBy = "Posted by " + property.user.Username;
   const address =
     property.locationDetails.society +
     ", " +
@@ -43,7 +42,15 @@ function PropertyCard(props) {
               }}
             >
               <div className="posted-by">
-                <Typography component="h4" variant="h6">
+                <Typography
+                  component="h4"
+                  variant="h6"
+                  style={{
+                    fontFamily: "Montserrat",
+                    fontWeight: 600,
+                    fontSize: 20,
+                  }}
+                >
                   {postedBy}
                 </Typography>
               </div>
@@ -57,7 +64,11 @@ function PropertyCard(props) {
               }}
             >
               <div className="property-card-item">
-                <Typography component="h4" variant="h6">
+                <Typography
+                  component="h4"
+                  variant="h6"
+                  style={{ fontFamily: "Montserrat" }}
+                >
                   Selling Price &#x20b9;{" "}
                   {numDifferentiation(parseInt(property.data.price))}
                 </Typography>
@@ -65,22 +76,16 @@ function PropertyCard(props) {
             </Grid>
             <Grid item xs={12} md={6} style={{ display: "flex" }}>
               <div className="property-card-item">
-                <Typography component="h4" variant="h5">
+                <Typography
+                  component="h4"
+                  variant="h5"
+                  style={{ fontFamily: "Montserrat", fontWeight: 500 }}
+                >
                   {address.toUpperCase()}
                 </Typography>
               </div>
             </Grid>
-            {/* <Grid item xs={12} md={6} style={{ display: "flex" }}>
-              <div className="property-card-item">
-                <Typography
-                  component="h4"
-                  variant="h6"
-                  style={{ color: "#524C4C" }}
-                >
-                  Posted on {property.postedOn}
-                </Typography>
-              </div>
-            </Grid> */}
+
             <Grid
               item
               xs={12}
@@ -98,6 +103,8 @@ function PropertyCard(props) {
                   paddingLeft: 40,
                   paddingRight: 40,
                   whiteSpace: "nowrap",
+                  fontFamily: "Montserrat",
+                  borderRadius: 50,
                 }}
               >
                 Proceed to Verification

@@ -10,7 +10,7 @@ const steps = [
   "Property Profile",
   "Amenities",
   "Photos",
-  "Pricing",
+  "Ownership",
 ];
 
 export default function ProgressBar(props) {
@@ -19,7 +19,7 @@ export default function ProgressBar(props) {
       <Stepper activeStep={props.currentActiveStep} alternativeLabel>
         {steps.map((label) => (
           <Step key={label}>
-            <StepLabel>{label}</StepLabel>
+            <StepLabel style={{ fontFamily: "Montserrat" }}>{label}</StepLabel>
           </Step>
         ))}
       </Stepper>

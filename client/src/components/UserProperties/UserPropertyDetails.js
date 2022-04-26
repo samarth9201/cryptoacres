@@ -14,7 +14,7 @@ import { API } from "../../constants";
 import { useParams } from "react-router-dom";
 import { ethers } from "ethers";
 import NFTMarketplace from "../../contracts/NFTMarketplace.json";
-import web3 from "web3"
+import web3 from "web3";
 
 function UserPropertyDetails(props) {
   const { contract, id } = useParams();
@@ -33,7 +33,7 @@ function UserPropertyDetails(props) {
     console.log(sellingPrice);
     console.log(props.signer);
 
-    var ethPrice = await web3.utils.toWei(sellingPrice, "ether")
+    var ethPrice = await web3.utils.toWei(sellingPrice, "ether");
     var nftContract = new ethers.Contract(
       contract,
       NFTMarketplace.abi,
@@ -41,7 +41,9 @@ function UserPropertyDetails(props) {
     );
     const listingPrice = await nftContract.getListingPrice();
     console.log(listingPrice);
-    const tx = await nftContract.resellToken(id, ethPrice, {value: listingPrice})
+    const tx = await nftContract.resellToken(id, ethPrice, {
+      value: listingPrice,
+    });
     const receipt = await tx.wait();
 
     alert("Transaction Successful: " + receipt.transactionHash);
@@ -61,7 +63,16 @@ function UserPropertyDetails(props) {
     >
       <Grid container spacing={2}>
         <Grid item xs={12} md={12}>
-          <Typography component="h4" variant="h4">
+          <Typography
+            component="h4"
+            variant="h4"
+            style={{
+              color: "#0D6EFD",
+              fontWeight: 600,
+              fontSize: 30,
+              fontFamily: "Montserrat",
+            }}
+          >
             {address.toUpperCase()}{" "}
             <Tooltip title="Verified Property">
               <VerifiedIcon
@@ -77,7 +88,14 @@ function UserPropertyDetails(props) {
             <Typography
               component="h4"
               variant="body1"
-              style={{ color: "#524C4C", marginBottom: 20 }}
+              style={{
+                color: "#524C4C",
+                marginBottom: 10,
+                fontWeight: 600,
+                fontSize: 15,
+                fontFamily: "Montserrat",
+                marginBottom: 20,
+              }}
             >
               Owned by {user === null ? property.data.owner : user.Username}
             </Typography>
@@ -88,6 +106,8 @@ function UserPropertyDetails(props) {
               id="sellingPrice"
               label="Selling Price (ETH)"
               name="sellingPrice"
+              inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+              InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
               onChange={(event) => {
                 setSellingPrice(event.target.value);
               }}
@@ -95,7 +115,12 @@ function UserPropertyDetails(props) {
 
             <Button
               variant="contained"
-              style={{ marginTop: 20, paddingTop: 10, paddingBottom: 10 }}
+              style={{
+                marginTop: 20,
+                paddingTop: 10,
+                paddingBottom: 10,
+                fontFamily: "Montserrat",
+              }}
               fullWidth
               onClick={placeForSale}
             >

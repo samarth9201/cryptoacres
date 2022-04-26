@@ -48,7 +48,11 @@ function LocationDetailsForm(props) {
               noValidate
               sx={{ mt: 1 }}
             >
-              <Typography component="h2" variant="h5">
+              <Typography
+                component="h2"
+                variant="h5"
+                style={{ fontFamily: "Montserrat" }}
+              >
                 Where is your property located?
               </Typography>
 
@@ -60,6 +64,8 @@ function LocationDetailsForm(props) {
                 required
                 fullWidth
                 style={{ marginTop: 20, marginBottom: 5 }}
+                inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
               />
 
               <TextField
@@ -70,6 +76,8 @@ function LocationDetailsForm(props) {
                 required
                 fullWidth
                 style={{ marginTop: 20, marginBottom: 5 }}
+                inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
               />
 
               <TextField
@@ -79,6 +87,8 @@ function LocationDetailsForm(props) {
                 name="society"
                 fullWidth
                 style={{ marginTop: 20, marginBottom: 5 }}
+                inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
               />
 
               <Button

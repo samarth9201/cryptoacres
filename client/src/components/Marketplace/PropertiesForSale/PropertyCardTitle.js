@@ -8,16 +8,23 @@ function PropertyCardTitle(props) {
   return (
     <div className="property-card-title-div">
       <span className="property-card-title-span" style={props.style}>
-        <Typography component="h4" variant="h6">
-          {props.title}{" "}
-          {props.verificationStatus === "Verified" && <Tooltip title="Verified Property">
-            <VerifiedIcon
-              fontSize="small"
-              style={{ color: "rgb(32, 129, 226)" }}
-            />
-          </Tooltip>}
-          
-        </Typography>
+        <center>
+          <Typography
+            component="h4"
+            variant="h6"
+            style={{ fontFamily: "Montserrat" }}
+          >
+            {props.title}{" "}
+            {props.verificationStatus === "Verified" && (
+              <Tooltip title="Verified Property">
+                <VerifiedIcon
+                  fontSize="small"
+                  style={{ color: "rgb(32, 129, 226)" }}
+                />
+              </Tooltip>
+            )}
+          </Typography>
+        </center>
       </span>
     </div>
   );

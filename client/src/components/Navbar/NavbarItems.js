@@ -1,9 +1,9 @@
 const NavbarItems = [
-  {
-    id: 0,
-    title: "Home",
-    link: "/",
-  },
+  // {
+  //   id: 0,
+  //   title: "Home",
+  //   link: "/",
+  // },
   {
     id: 1,
     title: "About",
@@ -16,7 +16,7 @@ const NavbarItems = [
   },
   {
     id: 3,
-    title: "Markertplace",
+    title: "Marketplace",
     link: "/marketplace",
   },
   {
@@ -26,6 +26,11 @@ const NavbarItems = [
   },
   {
     id: 5,
+    title: "My Properties",
+    link: "/user-properties",
+  },
+  {
+    id: 6,
     title: "Metamask",
     link: "/metamask-wallet",
   },

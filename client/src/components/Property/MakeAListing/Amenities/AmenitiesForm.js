@@ -72,7 +72,11 @@ function AmenitiesForm(props) {
               noValidate
               sx={{ mt: 1 }}
             >
-              <Typography component="h2" variant="h5">
+              <Typography
+                component="h2"
+                variant="h5"
+                style={{ fontFamily: "Montserrat" }}
+              >
                 Amenities / Unique features
               </Typography>
 
@@ -92,6 +96,7 @@ function AmenitiesForm(props) {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                style={{ fontFamily: "Montserrat" }}
               >
                 Continue
               </Button>

@@ -9,11 +9,11 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import TimelapseIcon from "@mui/icons-material/Timelapse";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
-import web3 from "web3"
+import web3 from "web3";
 
 function PropertyCard(props) {
   const navigate = useNavigate();
-  const [price, setPrice] = React.useState(0)
+  const [price, setPrice] = React.useState(0);
   const property = props.property;
   const title =
     property.locationDetails.society.toUpperCase() +
@@ -23,14 +23,15 @@ function PropertyCard(props) {
     property.locationDetails.city.toUpperCase();
 
   function viewDetailsHandle() {
-    navigate(`/view-property-details/${property.address}/${property.data.tokenId}`);
+    navigate(
+      `/view-property-details/${property.address}/${property.data.tokenId}`
+    );
   }
 
-  React.useEffect(async () =>{
-
-    var a = await  web3.utils.fromWei(property.data.price.toString(), "ether")
-    setPrice(a)
-  }, [])
+  React.useEffect(async () => {
+    var a = await web3.utils.fromWei(property.data.price.toString(), "ether");
+    setPrice(a);
+  }, []);
 
   return (
     <>
@@ -40,45 +41,60 @@ function PropertyCard(props) {
         className="property-card-paper"
       >
         <center>
-        <img
-          src={property.imageUrlList[0]}
-          className="property-card-property-img"
-          alt="property"
-        />
+          <img
+            src={property.imageUrlList[0]}
+            className="property-card-property-img"
+            alt="property"
+          />
         </center>
-        <PropertyCardTitle title={title} />
+        <PropertyCardTitle
+          title={title}
+          verificationStatus={property.verificationStatus}
+        />
         <Grid container spacing={2}>
+          <Grid item xs={6}>
+            <center>
+              <Typography
+                component="h4"
+                variant="body2"
+                style={{
+                  marginLeft: 30,
+                  fontFamily: "Montserrat",
+                  color: "#0D6EFD",
+                  fontWeight: 500,
+                  fontSize: 20,
+                }}
+              >
+                Price
+              </Typography>
+            </center>
+          </Grid>
           <Grid item xs={6}>
             <Typography
               component="h4"
-              variant="body2"
-              style={{ marginLeft: 30 }}
-            >
-              Price
-            </Typography>
-            <Typography
-              component="h4"
               variant="body1"
-              style={{ marginLeft: 30 }}
+              style={{
+                marginLeft: 30,
+                fontFamily: "Montserrat",
+                color: "#0D6EFD",
+                fontWeight: 500,
+                fontSize: 20,
+              }}
             >
               {price + " "} ETH
             </Typography>
           </Grid>
-          <Grid item xs={6} style={{ paddingLeft: 50 }}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                flexWrap: "wrap",
-              }}
-            >
-            </div>
-          </Grid>
+
           <Grid item xs={12}>
             <Button
               fullWidth
               variant="contained"
-              style={{ backgroundColor: "#013A63", paddingRight: 10, borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
+              style={{
+                paddingRight: 10,
+                borderTopLeftRadius: 0,
+                borderTopRightRadius: 0,
+                fontFamily: "Montserrat",
+              }}
               onClick={viewDetailsHandle}
             >
               View Details

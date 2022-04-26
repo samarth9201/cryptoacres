@@ -12,6 +12,8 @@ function AmenitiesFormList(props) {
               name={option.name}
               value={option.value}
               className="checkbox-input"
+              inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+              InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
             />
             <label htmlFor={option.name} className="checkbox-label">
               {" "}

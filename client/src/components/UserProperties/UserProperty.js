@@ -11,9 +11,15 @@ import { useParams } from "react-router-dom";
 import NFTMarketplace from "../../contracts/NFTMarketplace.json";
 import axios from "axios";
 
-//Send a req to backend to get the
-//property details
 // const property = {
+//   data: {
+//     owner: "shashank43",
+//     pricePSF: 2300,
+//   },
+//   user: {
+//     Username: "shashank43",
+//   },
+//   verificationStatus: "Verified",
 //   propertyId: "1234",
 //   owner: {
 //     ownerId: "123",
@@ -77,15 +83,15 @@ function UserProperty(props) {
     const web3 = new ethers.providers.JsonRpcProvider(RPC);
     var nftContract = new ethers.Contract(contract, NFTMarketplace.abi, web3);
     var url = await nftContract.tokenURI(id);
-    var data = await nftContract.idToMarketItem(id)
+    var data = await nftContract.idToMarketItem(id);
     var metadata = await axios.get(url);
     metadata = metadata.data.attributes;
 
     metadata = {
       ...metadata,
-      data
-    }
-    console.log(metadata)
+      data,
+    };
+    console.log(metadata);
     setProperty(metadata);
   }, []);
   return (
@@ -99,7 +105,7 @@ function UserProperty(props) {
             <ImageCarousel imageUrlList={property.imageUrlList} />
           </Grid>
           <Grid item xs={12} md={6}>
-            <UserPropertyDetails property={property} signer={props.signer}/>
+            <UserPropertyDetails property={property} signer={props.signer} />
           </Grid>
           <Grid item xs={12} md={12}>
             <PropertyDescription property={property} />

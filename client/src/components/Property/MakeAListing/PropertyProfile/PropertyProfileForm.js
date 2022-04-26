@@ -113,11 +113,19 @@ function PropertyProfileForm(props) {
               noValidate
               sx={{ mt: 1 }}
             >
-              <Typography component="h2" variant="h5">
+              <Typography
+                component="h2"
+                variant="h5"
+                style={{ fontFamily: "Montserrat" }}
+              >
                 Tell us about your property
               </Typography>
 
-              <Typography component="h2" variant="h6" style={{ marginTop: 25 }}>
+              <Typography
+                component="h2"
+                variant="h6"
+                style={{ marginTop: 25, fontFamily: "Montserrat" }}
+              >
                 Room Details
               </Typography>
 
@@ -131,6 +139,8 @@ function PropertyProfileForm(props) {
                     type="number"
                     fullWidth
                     style={{ marginTop: 20, marginBottom: 5 }}
+                    inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                    InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
                   />
                 </Grid>
                 <Grid item xs={6} md={4}>
@@ -142,6 +152,8 @@ function PropertyProfileForm(props) {
                     type="number"
                     fullWidth
                     style={{ marginTop: 20, marginBottom: 5 }}
+                    inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                    InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
                   />
                 </Grid>
                 <Grid item xs={6} md={4}>
@@ -153,11 +165,17 @@ function PropertyProfileForm(props) {
                     type="number"
                     fullWidth
                     style={{ marginTop: 20, marginBottom: 5 }}
+                    inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                    InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
                   />
                 </Grid>
               </Grid>
 
-              <Typography component="h2" variant="h6" style={{ marginTop: 25 }}>
+              <Typography
+                component="h2"
+                variant="h6"
+                style={{ marginTop: 25, fontFamily: "Montserrat" }}
+              >
                 Area Details
               </Typography>
 
@@ -171,6 +189,8 @@ function PropertyProfileForm(props) {
                     type="tel"
                     fullWidth
                     style={{ marginTop: 20, marginBottom: 5 }}
+                    inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                    InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
                   />
                 </Grid>
                 <Grid item xs={6} md={4}>
@@ -182,6 +202,8 @@ function PropertyProfileForm(props) {
                     type="tel"
                     fullWidth
                     style={{ marginTop: 20, marginBottom: 5 }}
+                    inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                    InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
                   />
                 </Grid>
                 <Grid item xs={6} md={4}>
@@ -195,6 +217,8 @@ function PropertyProfileForm(props) {
                     onChange={handleAreaUnitChange}
                     fullWidth
                     style={{ marginTop: 20, marginBottom: 5 }}
+                    inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                    InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
                   >
                     {areaUnit.map((option) => (
                       <MenuItem key={option} value={option}>
@@ -205,7 +229,11 @@ function PropertyProfileForm(props) {
                 </Grid>
               </Grid>
 
-              <Typography component="h2" variant="h6" style={{ marginTop: 25 }}>
+              <Typography
+                component="h2"
+                variant="h6"
+                style={{ marginTop: 25, fontFamily: "Montserrat" }}
+              >
                 Furnishing
               </Typography>
 
@@ -220,6 +248,10 @@ function PropertyProfileForm(props) {
                         id="radio1"
                         onChange={handleFurnishingChange}
                         className="radio-input"
+                        inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                        InputLabelProps={{
+                          style: { fontFamily: "Montserrat" },
+                        }}
                       />
                       <label className="radio-label" htmlFor="radio1">
                         Furnished
@@ -235,6 +267,10 @@ function PropertyProfileForm(props) {
                         id="radio2"
                         onChange={handleFurnishingChange}
                         className="radio-input"
+                        inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                        InputLabelProps={{
+                          style: { fontFamily: "Montserrat" },
+                        }}
                       />
                       <label className="radio-label" htmlFor="radio2">
                         Semi-furnished
@@ -250,6 +286,10 @@ function PropertyProfileForm(props) {
                         id="radio3"
                         onChange={handleFurnishingChange}
                         className="radio-input"
+                        inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                        InputLabelProps={{
+                          style: { fontFamily: "Montserrat" },
+                        }}
                       />
                       <label className="radio-label" htmlFor="radio3">
                         Unfurnished
@@ -259,7 +299,11 @@ function PropertyProfileForm(props) {
                 </Grid>
               </ul>
 
-              <Typography component="h2" variant="h6" style={{ marginTop: 25 }}>
+              <Typography
+                component="h2"
+                variant="h6"
+                style={{ marginTop: 25, fontFamily: "Montserrat" }}
+              >
                 Reserved Parking
               </Typography>
 
@@ -274,6 +318,10 @@ function PropertyProfileForm(props) {
                         id="radio4"
                         onChange={handleParkingChange}
                         className="radio-input"
+                        inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                        InputLabelProps={{
+                          style: { fontFamily: "Montserrat" },
+                        }}
                       />
                       <label className="radio-label" htmlFor="radio4">
                         Covered Parking
@@ -289,6 +337,10 @@ function PropertyProfileForm(props) {
                         id="radio5"
                         onChange={handleParkingChange}
                         className="radio-input"
+                        inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                        InputLabelProps={{
+                          style: { fontFamily: "Montserrat" },
+                        }}
                       />
                       <label className="radio-label" htmlFor="radio5">
                         Open Parking
@@ -304,6 +356,10 @@ function PropertyProfileForm(props) {
                         id="radio6"
                         onChange={handleParkingChange}
                         className="radio-input"
+                        inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                        InputLabelProps={{
+                          style: { fontFamily: "Montserrat" },
+                        }}
                       />
                       <label className="radio-label" htmlFor="radio6">
                         None
@@ -313,7 +369,11 @@ function PropertyProfileForm(props) {
                 </Grid>
               </ul>
 
-              <Typography component="h2" variant="h6" style={{ marginTop: 25 }}>
+              <Typography
+                component="h2"
+                variant="h6"
+                style={{ marginTop: 25, fontFamily: "Montserrat" }}
+              >
                 Availability Status
               </Typography>
 
@@ -328,6 +388,10 @@ function PropertyProfileForm(props) {
                         id="radio7"
                         onChange={handleAvailabilityChange}
                         className="radio-input"
+                        inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                        InputLabelProps={{
+                          style: { fontFamily: "Montserrat" },
+                        }}
                       />
                       <label className="radio-label" htmlFor="radio7">
                         Ready to move
@@ -343,6 +407,10 @@ function PropertyProfileForm(props) {
                         id="radio8"
                         onChange={handleAvailabilityChange}
                         className="radio-input"
+                        inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                        InputLabelProps={{
+                          style: { fontFamily: "Montserrat" },
+                        }}
                       />
                       <label className="radio-label" htmlFor="radio8">
                         Under construction
@@ -356,7 +424,7 @@ function PropertyProfileForm(props) {
                 <Typography
                   component="h2"
                   variant="h6"
-                  style={{ marginTop: 25 }}
+                  style={{ marginTop: 25, fontFamily: "Montserrat" }}
                 >
                   Age of property
                 </Typography>
@@ -377,7 +445,7 @@ function PropertyProfileForm(props) {
                 <Typography
                   component="h2"
                   variant="h6"
-                  style={{ marginTop: 25 }}
+                  style={{ marginTop: 25, fontFamily: "Montserrat" }}
                 >
                   Possession By
                 </Typography>
@@ -396,6 +464,8 @@ function PropertyProfileForm(props) {
                       onChange={handleExpectedYearChange}
                       fullWidth
                       style={{ marginTop: 20, marginBottom: 5 }}
+                      inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                      InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
                     >
                       {getNextTenYears().map((option) => (
                         <MenuItem key={option} value={option}>
@@ -416,6 +486,8 @@ function PropertyProfileForm(props) {
                       onChange={handleExpectedMonthChange}
                       fullWidth
                       style={{ marginTop: 20, marginBottom: 5 }}
+                      inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                      InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
                     >
                       {months.map((option) => (
                         <MenuItem key={option} value={option}>
@@ -432,6 +504,7 @@ function PropertyProfileForm(props) {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                style={{ fontFamily: "Montserrat" }}
               >
                 Continue
               </Button>

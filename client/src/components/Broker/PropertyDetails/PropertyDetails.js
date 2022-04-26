@@ -57,7 +57,16 @@ function PropertyDetails(props) {
     >
       <Grid container spacing={2}>
         <Grid item xs={12} md={12}>
-          <Typography component="h4" variant="h4">
+          <Typography
+            component="h4"
+            variant="h4"
+            style={{
+              color: "#0D6EFD",
+              fontWeight: 600,
+              fontSize: 30,
+              fontFamily: "Montserrat",
+            }}
+          >
             {address.toUpperCase()}
           </Typography>
         </Grid>
@@ -66,14 +75,23 @@ function PropertyDetails(props) {
             <Typography
               component="h4"
               variant="h5"
-              style={{ color: "#524C4C", marginBottom: 10 }}
+              style={{
+                color: "#524C4C",
+                marginBottom: 10,
+                fontWeight: 600,
+                fontSize: 15,
+                fontFamily: "Montserrat",
+              }}
             >
-              Posted by {user === null ? property.data.owner : user.Username}
+              POSTED BY{" "}
+              {user === null
+                ? property.data.owner.toUpperCase()
+                : user.Username.toUpperCase()}
             </Typography>
             <Typography
               component="h4"
               variant="h6"
-              style={{ marginBottom: 10 }}
+              style={{ marginBottom: 10, fontFamily: "Montserrat" }}
             >
               Property Valuation
             </Typography>
@@ -83,7 +101,9 @@ function PropertyDetails(props) {
               id="price"
               label="Price"
               name="price"
-              style={{ marginTop: 10 }}
+              style={{ marginTop: 10, fontFamily: "Montserrat" }}
+              inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+              InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
               onChange={(event) => {
                 setPrice(event.target.value);
               }}
@@ -93,7 +113,9 @@ function PropertyDetails(props) {
               id="pricePSF"
               label="Price / sq. ft."
               name="pricePSF"
-              style={{ marginTop: 20 }}
+              style={{ marginTop: 20, fontFamily: "Montserrat" }}
+              inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+              InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
               onChange={(event) => {
                 setPricePSF(event.target.value);
               }}
@@ -103,7 +125,7 @@ function PropertyDetails(props) {
               <Grid item xs={6}>
                 <Button
                   variant="contained"
-                  style={{ marginTop: 20 }}
+                  style={{ marginTop: 20, fontFamily: "Montserrat" }}
                   fullWidth
                   onClick={handleApprove}
                 >
@@ -112,10 +134,19 @@ function PropertyDetails(props) {
               </Grid>
 
               {/* <Grid item xs={6}>
-            <Button variant="contained" style={{ marginTop: 20, backgroundColor: "red" }} fullWidth onClick={handleReject}>
-              Reject Listing
-            </Button>
-            </Grid> */}
+                <Button
+                  variant="contained"
+                  style={{
+                    marginTop: 20,
+                    backgroundColor: "red",
+                    fontFamily: "Montserrat",
+                  }}
+                  fullWidth
+                  // onClick={handleReject}
+                >
+                  Reject Listing
+                </Button>
+              </Grid> */}
             </Grid>
           </div>
         </Grid>
@@ -129,6 +160,8 @@ function PropertyDetails(props) {
             onChange={(event) => {
               setIssues(event.target.value);
             }}
+            inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+            InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
           />
         </Grid>
       </Grid>

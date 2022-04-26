@@ -11,7 +11,12 @@ function PropertyAmenities(props) {
       <Typography
         component="h4"
         variant="h5"
-        style={{ color: "#524C4C", marginBottom: 20 }}
+        style={{
+          color: "#524C4C",
+          marginBottom: 20,
+          fontFamily: "Montserrat",
+          fontWeight: 600,
+        }}
       >
         Property Amenities & Perks
       </Typography>

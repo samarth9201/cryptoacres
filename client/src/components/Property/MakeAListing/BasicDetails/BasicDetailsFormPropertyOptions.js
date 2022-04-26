@@ -23,6 +23,8 @@ function PropertyOptions(props) {
                 id={property.id}
                 onChange={handleChangePropertyTypeTwo}
                 className="radio-input"
+                inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
               />
               <label className="radio-label" htmlFor={property.id}>
                 {property.label}

@@ -61,11 +61,19 @@ function PricingForm(props) {
               noValidate
               sx={{ mt: 1 }}
             >
-              <Typography component="h2" variant="h5">
-                Pricing and Other details
+              <Typography
+                component="h2"
+                variant="h5"
+                style={{ fontFamily: "Montserrat" }}
+              >
+                Ownership and Other details
               </Typography>
 
-              <Typography component="h2" variant="h6" style={{ marginTop: 25 }}>
+              <Typography
+                component="h2"
+                variant="h6"
+                style={{ marginTop: 25, fontFamily: "Montserrat" }}
+              >
                 Ownership
               </Typography>
 
@@ -79,6 +87,8 @@ function PricingForm(props) {
                       id={item}
                       onChange={handleOwnershipChange}
                       className="radio-input"
+                      inputProps={{ style: { fontFamily: "Montserrat" } }} // font size of input text
+                      InputLabelProps={{ style: { fontFamily: "Montserrat" } }}
                     />
                     <label className="radio-label" htmlFor={item}>
                       {item}

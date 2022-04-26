@@ -14,8 +14,20 @@ import NavbarItems from "./NavbarItems";
 import "../../css/Navbar.css";
 import metamaskLogo from "../../images/metamask.png";
 import { Avatar } from "@mui/material";
+import { NavLink } from "react-router-dom";
+import { makeStyles } from "@mui/styles";
+
+// const useStyles = makeStyles({
+//   button: {
+//     "&.active": {
+//       color: "blue",
+//       textDecoration: "none",
+//     },
+//   },
+// });
 
 function ResponsiveAppBar(props) {
+  // const classes = useStyles();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -27,8 +39,12 @@ function ResponsiveAppBar(props) {
   };
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl" className="navbar">
+    <AppBar
+      position="static"
+      style={{ backgroundColor: "transparent" }}
+      sx={{ bgcolor: "transparent" }}
+    >
+      <Container maxWidth="xxl" className="navbar">
         <Toolbar disableGutters>
           {/* Mobile view */}
           <Typography
@@ -48,7 +64,7 @@ function ResponsiveAppBar(props) {
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
-              onClick={handleOpenNavMenu} 
+              onClick={handleOpenNavMenu}
               color="inherit"
             >
               <MenuIcon className="menu-icon" />
@@ -98,28 +114,37 @@ function ResponsiveAppBar(props) {
             sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
           >
             {NavbarItems.slice(0, 5).map((item, id) => (
-              <Link
+              <NavLink
                 key={id}
                 to={item.link}
                 className="navbar-links navbar-links-desktop"
+                // className={classes.button}
+                style={{ textDecoration: "none" }}
+                component={NavLink}
               >
                 <Button
                   key={item.id}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "black", display: "block" }}
+                  sx={{
+                    my: 2,
+                    color: "black",
+                    display: "block",
+                  }}
                 >
                   {item.title}
                 </Button>
-              </Link>
+              </NavLink>
             ))}
 
             <Button
               onClick={props.connectWallet}
               to="/metamask-wallet"
               className="user-navbar-user-signup-btn"
-              startIcon={<Avatar src={metamaskLogo} sx={{ width: 56, height: 56 }}/>}
+              startIcon={
+                <Avatar src={metamaskLogo} sx={{ width: 56, height: 56 }} />
+              }
               size="large"
-              sx={{position: "absolute", right: 0}}
+              sx={{ position: "absolute", right: 0 }}
               variant="text"
             >
               {props.user !== null ? props.user.Username : null}

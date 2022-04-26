@@ -36,10 +36,10 @@ function PropertyDetails(props) {
       props.signer
     );
     var a;
-    if(price !== "NA"){
-      a = await web3.utils.toWei(price, "ether")
+    if (price !== "NA") {
+      a = await web3.utils.toWei(price, "ether");
     }
-    const tx = await nftContract.createMarketSale(id, {value: a});
+    const tx = await nftContract.createMarketSale(id, { value: a });
     const receipt = await tx.wait();
 
     alert("Transaction Successful: " + receipt.transactionHash);
@@ -64,7 +64,16 @@ function PropertyDetails(props) {
     >
       <Grid container spacing={2}>
         <Grid item xs={12} md={12}>
-          <Typography component="h4" variant="h4">
+          <Typography
+            component="h4"
+            variant="h4"
+            style={{
+              color: "#0D6EFD",
+              fontWeight: 600,
+              fontSize: 30,
+              fontFamily: "Montserrat",
+            }}
+          >
             {address.toUpperCase()}{" "}
             <Tooltip title="Verified Property">
               <VerifiedIcon
@@ -80,7 +89,13 @@ function PropertyDetails(props) {
             <Typography
               component="h4"
               variant="body1"
-              style={{ color: "#524C4C", marginBottom: 20 }}
+              style={{
+                marginBottom: 20,
+                color: "#524C4C",
+                fontWeight: 600,
+                fontSize: 15,
+                fontFamily: "Montserrat",
+              }}
             >
               Sold by {user === null ? property.data.owner : user.Username}
             </Typography>

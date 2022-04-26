@@ -18,10 +18,9 @@ function PropertyCard(props) {
     property.locationDetails.locality.toUpperCase() +
     ", " +
     property.locationDetails.city.toUpperCase();
-  
 
   function viewDetailsHandle() {
-    console.log(property)
+    console.log(property);
     navigate(`/user-property/${props.contract}/${property.tokenId}`);
   }
 
@@ -29,38 +28,36 @@ function PropertyCard(props) {
     <>
       <Paper
         elevation={3}
-        
         onClick={viewDetailsHandle}
         className="property-card-paper"
       >
         <center>
-        <img
-          src={property.imageUrlList[0]}
-          className="property-card-property-img"
-          alt="property"
-        />
+          <img
+            src={property.imageUrlList[0]}
+            className="property-card-property-img"
+            alt="property"
+          />
         </center>
-        <PropertyCardTitle title={title} verificationStatus={property.verificationStatus}/>
+        <PropertyCardTitle
+          title={title}
+          verificationStatus={property.verificationStatus}
+        />
         <Grid container spacing={2}>
-
-          <Grid item xs={12} style={{marginTop: 10}}>
-          {/* <Typography
-              component="h4"
-              variant="h6"
-              style={{ marginLeft: 30, marginTop: 10, marginBottom: 10 }}
-            >
-              Status: {property.verificationStatus}
-            </Typography> */}
+          <Grid item xs={12} style={{ marginTop: 10 }}>
             <Button
               fullWidth
               variant="contained"
-              style={{ backgroundColor: "#013A63", paddingRight: 10, borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
+              style={{
+                paddingRight: 10,
+                borderTopLeftRadius: 0,
+                borderTopRightRadius: 0,
+                fontFamily: "Montserrat",
+              }}
               onClick={viewDetailsHandle}
             >
               View Details
             </Button>
           </Grid>
-          
         </Grid>
       </Paper>
     </>
